@@ -4,14 +4,16 @@ import ArrowIcon from "components/icon/arrow";
 export default function Pagination({
   type,
   currentPage,
+  totalPage,
   text,
 }: {
   type: "all" | "category" | "tag";
   currentPage: number;
+  totalPage: number;
   text: string;
 }) {
-  const hasPrev = true;
-  const hasNext = true;
+  const hasPrev = currentPage > 1;
+  const hasNext = totalPage > currentPage;
 
   let path = "/";
   if (type == "category") {
