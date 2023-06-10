@@ -7,9 +7,11 @@ import ArrowIcon from "components/icon/arrow";
 export default async function PostCard({
   data,
   size,
+  isTitleH1 = true,
 }: {
   data: PostMeta;
   size: "large" | "small";
+  isTitleH1: boolean;
 }) {
   const image = await GetExternalImageInfo(data.coverImage, "eyeCatch");
 
@@ -30,20 +32,36 @@ export default async function PostCard({
       </Link>
 
       {data.category ? (
-        <h2 className="mt-4 text-xs uppercase text-gray-600">
-          <Link href={"/category/" + data.category.toLowerCase() + "/1"}>
-            {data.category}
-          </Link>
-        </h2>
+        isTitleH1 ? (
+          <h2 className="mt-4 text-xs uppercase text-gray-600">
+            <Link href={"/category/" + data.category.toLowerCase() + "/1"}>
+              {data.category}
+            </Link>
+          </h2>
+        ) : (
+          <h3 className="mt-4 text-xs uppercase text-gray-600">
+            <Link href={"/category/" + data.category.toLowerCase() + "/1"}>
+              {data.category}
+            </Link>
+          </h3>
+        )
       ) : (
         <></>
       )}
 
-      <h1 className="mt-4 text-lg text-gray-800 break-words">
-        <Link href={"post/" + data.slug} className="">
-          {data.title}
-        </Link>
-      </h1>
+      {isTitleH1 ? (
+        <h1 className="mt-4 text-lg text-gray-800 break-words">
+          <Link href={"post/" + data.slug} className="">
+            {data.title}
+          </Link>
+        </h1>
+      ) : (
+        <h2 className="mt-4 text-lg text-gray-800 break-words">
+          <Link href={"post/" + data.slug} className="">
+            {data.title}
+          </Link>
+        </h2>
+      )}
 
       <p className="mt-3 text-sm font-semibold text-gray-800">
         <Link
