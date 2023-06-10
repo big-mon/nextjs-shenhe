@@ -8,6 +8,6 @@ export const getPosts = () => {
 
   return {
     posts: posts,
-    totalPage: allPosts.length,
+    totalPage: Math.ceil(allPosts.length / PER_PAGE),
   };
 };

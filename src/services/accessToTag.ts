@@ -16,6 +16,6 @@ export const getPosts = (tag: string, page: number) => {
 
   return {
     posts: currentPagePosts,
-    totalPage: allPosts.length,
+    totalPage: Math.ceil(allPosts.length / PER_PAGE),
   };
 };
