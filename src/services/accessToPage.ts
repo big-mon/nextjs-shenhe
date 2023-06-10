@@ -8,17 +8,6 @@ export const getPosts = (page: number) => {
 
   return {
     posts: posts,
-    totalPage: allPosts.length,
+    totalPage: Math.ceil(allPosts.length / PER_PAGE),
   };
-};
-
-/** トップページ(ページ指定あり)のパス一覧を取得 */
-export const getAllPaths = () => {
-  const posts = getSortedPostsMeta();
-
-  const range = (start: number, end: number) =>
-    [...Array(end - start + 1)].map((_, i) => start + i);
-  const pages = range(1, Math.ceil(posts.length / PER_PAGE));
-
-  return pages;
 };
