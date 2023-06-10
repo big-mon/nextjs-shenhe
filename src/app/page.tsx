@@ -1,5 +1,6 @@
 import { getPosts } from "services/accessToTop";
 import PostCard from "components/card";
+import Pagination from "components/pagination";
 import { PER_PAGE } from "constants/setting";
 
 export default function Page() {
@@ -26,6 +27,10 @@ export default function Page() {
             </>
           );
         })}
+      </div>
+
+      <div className="mt-5">
+        <Pagination type="all" currentPage={1} text={""} />
       </div>
     </div>
   );

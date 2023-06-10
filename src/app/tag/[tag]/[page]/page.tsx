@@ -1,5 +1,6 @@
 import { getPosts } from "services/accessToTag";
 import PostCard from "components/card";
+import Pagination from "components/pagination";
 
 export default async function Page({
   params,
@@ -26,6 +27,10 @@ export default async function Page({
             </>
           );
         })}
+      </div>
+
+      <div className="mt-5">
+        <Pagination type="tag" currentPage={params.page} text={tag} />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { PostMeta } from "models/Post";
 import { getPosts } from "services/accessToCategory";
 import PostCard from "components/card";
+import Pagination from "components/pagination";
 
 export default async function Page({
   params,
@@ -27,6 +28,10 @@ export default async function Page({
             </>
           );
         })}
+      </div>
+
+      <div className="mt-5">
+        <Pagination type="category" currentPage={params.page} text={category} />
       </div>
     </div>
   );
