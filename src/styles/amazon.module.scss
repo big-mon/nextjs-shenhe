@@ -1,0 +1,70 @@
+.amazonBox {
+  font-family: initial;
+  padding: 2rem 0;
+  white-space: initial;
+  border-top: 2px solid #d3d3d3;
+  border-bottom: 2px solid #d3d3d3;
+
+  // wrapper
+  > div {
+    display: grid;
+    grid-template-columns: auto minmax(auto, 480px);
+    grid-template-rows: auto auto;
+    gap: 2rem 1rem;
+    grid-template-areas:
+      "image title"
+      "image brand";
+
+    // .itemImage
+    > div:nth-child(1) {
+      grid-area: image;
+
+      img {
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+
+    // .itemName
+    > div:nth-child(2) {
+      grid-area: title;
+
+      a {
+        display: block;
+        height: 100%;
+        color: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.6;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // .shopBrand
+    > div:nth-child(3) {
+      grid-area: brand;
+
+      a {
+        padding: 0.3em 0.8em;
+        color: #fff;
+        font-size: 0.9rem;
+        text-decoration: none;
+        background: #e47911;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
