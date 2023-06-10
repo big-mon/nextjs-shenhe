@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { page: number } }) {
           return (
             <>
               {/* @ts-expect-error Server Component */}
-              <PostCard key={post.slug} data={post} size="small" />
+              <PostCard key={"page_" + post.slug} data={post} size="small" />
             </>
           );
         })}

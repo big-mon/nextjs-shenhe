@@ -20,7 +20,7 @@ export default async function Page({
             <>
               {/* @ts-expect-error Server Component */}
               <PostCard
-                key={post.slug}
+                key={"category_" + post.slug}
                 data={post}
                 size="small"
                 isTitleH1={false}
