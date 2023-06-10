@@ -11,7 +11,7 @@ export default async function Page({
   return (
     <div className="container mx-auto max-w-5xl mb-14">
       <div className="grid lg:grid-cols-2 gap-6">
-        {categoryData.posts.slice(0, 2).map((post) => {
+        {categoryData.posts.map((post) => {
           return (
             <>
               {/* @ts-expect-error Server Component */}
