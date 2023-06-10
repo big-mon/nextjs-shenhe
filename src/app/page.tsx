@@ -29,14 +29,12 @@ export default function Page() {
         })}
       </div>
 
-      <div className="mt-5">
-        <Pagination
-          type="all"
-          currentPage={1}
-          totalPage={posts.totalPage}
-          text={""}
-        />
-      </div>
+      <Pagination
+        type="all"
+        currentPage={1}
+        totalPage={posts.totalPage}
+        text={""}
+      />
     </div>
   );
 }

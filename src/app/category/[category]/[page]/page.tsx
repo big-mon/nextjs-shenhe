@@ -30,14 +30,12 @@ export default async function Page({
         })}
       </div>
 
-      <div className="mt-5">
-        <Pagination
-          type="category"
-          currentPage={params.page}
-          totalPage={PostData.totalPage}
-          text={category}
-        />
-      </div>
+      <Pagination
+        type="category"
+        currentPage={params.page}
+        totalPage={PostData.totalPage}
+        text={category}
+      />
     </div>
   );
 }

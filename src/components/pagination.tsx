@@ -23,7 +23,7 @@ export default function Pagination({
   }
 
   return (
-    <div className="flex justify-center mx-auto">
+    <div className="flex justify-center mx-auto mt-6">
       {hasPrev && (
         <Link
           href={path + (Number(currentPage) - 1)}
