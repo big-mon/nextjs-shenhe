@@ -14,7 +14,7 @@ export const EXTERNAL_IMAGE_SERVICE: string =
 
 /** external image's prefix folder setting */
 export const EXTERNAL_IMAGE_PREFIX_DIRECTORY = [
-  { type: "hero", folder: "/Hero/" },
-  { type: "eyeCatch", folder: "/Hero/" },
+  { type: "hero", folder: "/illust/" },
+  { type: "eyeCatch", folder: "/illust/" },
   { type: "post", folder: "" },
 ];
