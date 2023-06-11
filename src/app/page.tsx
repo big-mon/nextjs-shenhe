@@ -1,7 +1,6 @@
 import { getPosts } from "services/accessToTop";
 import PostCard from "components/card";
 import Pagination from "components/pagination";
-import { PER_PAGE } from "constants/setting";
 
 export default function Page() {
   const posts = getPosts();
@@ -19,7 +18,7 @@ export default function Page() {
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
-        {posts.posts.slice(2, PER_PAGE - 2).map((post) => {
+        {posts.posts.slice(2).map((post) => {
           return (
             <>
               {/* @ts-expect-error Server Component */}
