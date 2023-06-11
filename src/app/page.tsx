@@ -33,7 +33,7 @@ export default function Page() {
         type="all"
         currentPage={1}
         totalPage={posts.totalPage}
-        text={""}
+        prefix={""}
       />
     </div>
   );

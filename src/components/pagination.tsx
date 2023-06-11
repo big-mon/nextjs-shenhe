@@ -5,21 +5,21 @@ export default function Pagination({
   type,
   currentPage,
   totalPage,
-  text,
+  prefix,
 }: {
   type: "all" | "category" | "tag";
   currentPage: number;
   totalPage: number;
-  text: string;
+  prefix: string;
 }) {
   const hasPrev = currentPage > 1;
   const hasNext = totalPage > currentPage;
 
   let path = "/";
   if (type == "category") {
-    path = "/category/" + text + "/";
+    path = "/category/" + prefix + "/";
   } else if (type == "tag") {
-    path = "/tag/" + text + "/";
+    path = "/tag/" + prefix + "/";
   }
 
   return (

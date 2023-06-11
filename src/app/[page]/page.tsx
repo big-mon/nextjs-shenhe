@@ -21,7 +21,7 @@ export default function Page({ params }: { params: { page: number } }) {
         type="all"
         currentPage={params.page}
         totalPage={posts.totalPage}
-        text={""}
+        prefix={""}
       />
     </div>
   );

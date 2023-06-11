@@ -34,7 +34,7 @@ export default async function Page({
         type="category"
         currentPage={params.page}
         totalPage={PostData.totalPage}
-        text={category}
+        prefix={category}
       />
     </div>
   );

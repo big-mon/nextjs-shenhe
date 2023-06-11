@@ -33,7 +33,7 @@ export default async function Page({
         type="tag"
         currentPage={params.page}
         totalPage={PostData.totalPage}
-        text={tag}
+        prefix={tag}
       />
     </div>
   );
