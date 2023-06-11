@@ -4,10 +4,10 @@ import { getSortedPostsMeta } from "repositories/local/post";
 /** トップページ向けの記事一覧と全ページ数を取得 */
 export const getPosts = () => {
   const allPosts = getSortedPostsMeta();
-  const posts = allPosts.slice(0, PER_PAGE);
+  const posts = allPosts.slice(0, PER_PAGE - 1);
 
   return {
     posts: posts,
-    totalPage: Math.ceil(allPosts.length / PER_PAGE),
+    totalPage: Math.ceil((allPosts.length + 1) / PER_PAGE),
   };
 };
