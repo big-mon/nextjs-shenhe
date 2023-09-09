@@ -3,12 +3,12 @@ import { GetExternalImageInfo } from "utils/image";
 
 export default async function PostImage({
   title,
-  src,
+  src = "",
   alt = "",
 }: {
-  title: string;
-  src: string;
-  alt: string;
+  title?: string;
+  src?: string;
+  alt?: string;
 }) {
   return (
     <>

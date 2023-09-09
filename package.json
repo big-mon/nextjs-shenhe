@@ -11,7 +11,6 @@
   "dependencies": {
     "@big-mon/react-component-amazon": "^1.0.8",
     "@headlessui/react": "^1.7.17",
-    "@types/probe-image-size": "^7.2.0",
     "date-fns": "^2.30.0",
     "gray-matter": "^4.0.3",
     "next": "^13.4.19",
@@ -30,6 +29,7 @@
   "devDependencies": {
     "@types/node": "^20.6.0",
     "@types/react": "^18.2.21",
+    "@types/probe-image-size": "^7.2.0",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.49.0",
     "eslint-config-next": "^13.4.19",
