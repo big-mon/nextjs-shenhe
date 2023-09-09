@@ -11,7 +11,7 @@ export default async function PostCard({
 }: {
   data: PostMeta;
   size: "large" | "small";
-  isTitleH1: boolean;
+  isTitleH1?: boolean;
 }) {
   const image = await GetExternalImageInfo(data.coverImage, "eyeCatch");
 
