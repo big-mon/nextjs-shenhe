@@ -13,7 +13,7 @@ const ArticleBody = ({ content }: { content: string }) => {
     <ReactMarkdown
       className={styles.article}
       remarkPlugins={[remarkGfm, remarkBreaks]}
-      rehypePlugins={[rehypeRaw]}
+      rehypePlugins={[]}
       components={{
         h1: "h2",
         h2: "h3",
