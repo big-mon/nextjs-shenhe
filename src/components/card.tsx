@@ -17,7 +17,7 @@ export default async function PostCard({
 
   return (
     <article className="group hover:bg-gray-200 rounded-xl p-5 transition-all">
-      <Link href={"post/" + data.slug}>
+      <Link href={"/post/" + data.slug}>
         <Image
           className="w-full object-cover rounded-xl aspect-video"
           src={image}
