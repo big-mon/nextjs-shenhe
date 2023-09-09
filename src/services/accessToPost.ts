@@ -10,6 +10,6 @@ export const getPost = async (slug: string) => {
 export const getAllPostSlugs = () => {
   // 全記事を取得、スラッグのみの配列に変換
   const metaList = getSortedPostsMeta();
-  const slugs = metaList.map((meta) => meta.slug);
+  const slugs = metaList.map((meta) => ({ slug: meta.slug }));
   return slugs;
 };
