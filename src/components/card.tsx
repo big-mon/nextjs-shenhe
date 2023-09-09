@@ -51,13 +51,13 @@ export default async function PostCard({
 
       {isTitleH1 ? (
         <h1 className="mt-4 text-lg text-gray-800 break-words">
-          <Link href={"post/" + data.slug} className="">
+          <Link href={"/post/" + data.slug} className="">
             {data.title}
           </Link>
         </h1>
       ) : (
         <h2 className="mt-4 text-lg text-gray-800 break-words">
-          <Link href={"post/" + data.slug} className="">
+          <Link href={"/post/" + data.slug} className="">
             {data.title}
           </Link>
         </h2>
@@ -65,7 +65,7 @@ export default async function PostCard({
 
       <p className="mt-3 text-sm font-semibold text-gray-800">
         <Link
-          href={"post/" + data.slug}
+          href={"/post/" + data.slug}
           className="inline-flex items-center gap-x-2"
         >
           Read more
