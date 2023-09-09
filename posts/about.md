@@ -1,10 +1,10 @@
 ---
 title: Lustarioへようこそ
 description: Next.js向けブログテンプレートの紹介
-slug: sample
-date: 2023-12-31
+slug: about
+date: 2021-12-31
 author: Mon
-image: pexels-donald-tong-143580_nn8t45.jpg
+image: fr2hbemgc6vjlxuk0syu
 category: Other
 tags: []
 ---
@@ -94,15 +94,13 @@ Lustario は Next.js 向けに作成されたブログテンプレートです�
 # リンクした文字列
 
 ```md
-[内部リンクテキスト](/)
-[外部リンクテキスト](https://example.com/)
+[リンクテキスト](https://example.com/)
 [この書き方もできます][1]
 
 [1]: https://example.com/
 ```
 
-[内部リンクテキスト](/)
-[外部リンクテキスト](https://example.com/)
+[リンクテキスト](https://example.com/)
 [この書き方もできます][1]
 
 [1]: https://example.com/
@@ -110,12 +108,12 @@ Lustario は Next.js 向けに作成されたブログテンプレートです�
 # 画像
 
 ```md
-![alt](/illust/fr2hbemgc6vjlxuk0syu.png)
-![alt](/illust/wwcpe2opj6rgpmfb2j6x.png "caption")
+![alt](/illust/oajmdfvac2ydbyrudcwo)
+![alt](/illust/ar6fbsinlkhklveegkta "caption")
 ```
 
-![alt](/illust/fr2hbemgc6vjlxuk0syu.png)
-![alt](/illust/wwcpe2opj6rgpmfb2j6x.png "caption")
+![alt](/illust/oajmdfvac2ydbyrudcwo)
+![alt](/illust/ar6fbsinlkhklveegkta "caption")
 
 # 引用
 
@@ -134,8 +132,6 @@ Lustario は Next.js 向けに作成されたブログテンプレートです�
 
 ```js
 let x = "sample text";
-let y =
-  "very long sample text. very long sample text. very long sample text. very long sample text. very long sample text.";
 ```
 ````
 
@@ -143,32 +139,30 @@ let y =
 
 ```js
 let x = "sample text";
-let y =
-  "very long sample text. very long sample text. very long sample text. very long sample text. very long sample text.";
 ```
 
 # YouTube 埋め込み
 
 ````md
 ```youtube
-51GIxXFKbzk
+bIHPvQmU7JQ
 ```
 ````
 
 ```youtube
-51GIxXFKbzk
+bIHPvQmU7JQ
 ```
 
 # Twitter 埋め込み
 
 ````md
 ```twitter
-1596485856948531200
+1441739144300929030
 ```
 ````
 
 ```twitter
-1596485856948531200
+1441739144300929030
 ```
 
 # 直接埋め込まれた HTML
