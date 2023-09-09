@@ -1,5 +1,5 @@
 ---
-title: Lustarioへようこそ
+title: Shenheへようこそ
 description: Next.js向けブログテンプレートの紹介
 slug: about
 date: 2021-12-31
@@ -9,9 +9,9 @@ category: Other
 tags: []
 ---
 
-# Lustario とは
+# Shenhe とは
 
-Lustario は Next.js 向けに作成されたブログテンプレートです。Next.js の特色である高速化機能をそのままに、TypeScript を使用、Markdown による記事管理を特徴とした無料のテンプレートです。
+Shenhe は Next.js 向けに作成されたブログテンプレートです。Next.js の特色である高速化機能をそのままに、TypeScript を使用、Markdown による記事管理を特徴とした無料のテンプレートです。
 
 以下に Markdown で記載した表現がどのような外観となるかを列挙します。
 
