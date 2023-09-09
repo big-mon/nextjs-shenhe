@@ -10,7 +10,6 @@ export default function Page({ params }: { params: { page: number } }) {
         {posts.posts.map((post) => {
           return (
             <>
-              {/* @ts-expect-error Server Component */}
               <PostCard key={"page_" + post.slug} data={post} size="small" />
             </>
           );

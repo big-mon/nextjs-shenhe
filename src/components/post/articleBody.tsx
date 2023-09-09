@@ -20,7 +20,6 @@ const ArticleBody = ({ content }: { content: string }) => {
         h3: "h4",
         h4: "h5",
         h5: "h6",
-        /* @ts-expect-error Server Component */
         img: PostImage,
         code: CodeBlock,
         a: CustomLink,

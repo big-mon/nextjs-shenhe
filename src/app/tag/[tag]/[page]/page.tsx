@@ -17,7 +17,6 @@ export default async function Page({
         {PostData.posts.map((post) => {
           return (
             <>
-              {/* @ts-expect-error Server Component */}
               <PostCard
                 key={"tag_" + post.slug}
                 data={post}

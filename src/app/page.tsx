@@ -10,7 +10,6 @@ export default function Page() {
         {posts.posts.slice(0, 2).map((post) => {
           return (
             <>
-              {/* @ts-expect-error Server Component */}
               <PostCard key={post.slug} data={post} size="large" />
             </>
           );
@@ -21,7 +20,6 @@ export default function Page() {
         {posts.posts.slice(2).map((post) => {
           return (
             <>
-              {/* @ts-expect-error Server Component */}
               <PostCard key={post.slug} data={post} size="small" />
             </>
           );
