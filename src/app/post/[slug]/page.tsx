@@ -86,6 +86,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return getAllPostSlugs();
 }
