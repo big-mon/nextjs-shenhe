@@ -1,9 +1,7 @@
-import "highlight.js/styles/github-dark.css";
 import styles from "styles/article.module.scss";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import PostImage from "./image";
 import CodeBlock from "./codeBlock";
@@ -15,7 +13,7 @@ const ArticleBody = ({ content }: { content: string }) => {
     <ReactMarkdown
       className={styles.article}
       remarkPlugins={[remarkGfm, remarkBreaks]}
-      rehypePlugins={[[rehypeHighlight, { ignoreMissing: true }], rehypeRaw]}
+      rehypePlugins={[rehypeRaw]}
       components={{
         h1: "h2",
         h2: "h3",
