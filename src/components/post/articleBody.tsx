@@ -3,17 +3,19 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
 import PostImage from "./image";
 import CodeBlock from "./codeBlock";
 import CustomLink from "./customLink";
 
 /** 記事本文 */
-const ArticleBody = ({ content }: { content: string }) => {
-  const convertResult = (
+export default function ArticleBody({ content }: { content: string }) {
+  return (
     <ReactMarkdown
       className={styles.article}
       remarkPlugins={[remarkGfm, remarkBreaks]}
-      rehypePlugins={[]}
+      rehypePlugins={[[rehypeHighlight, { ignoreMissing: true }], rehypeRaw]}
       components={{
         h1: "h2",
         h2: "h3",
@@ -28,8 +30,4 @@ const ArticleBody = ({ content }: { content: string }) => {
       {content}
     </ReactMarkdown>
   );
-
-  return convertResult;
-};
-
-export default ArticleBody;
+}
