@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getPost, getAllPostSlugs } from "services/accessToPost";
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
@@ -7,6 +8,26 @@ import { GetExternalImageInfo } from "utils/image";
 import Logo from "components/icon/logo";
 import ArrowIcon from "components/icon/arrow";
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const postData = await getPost(params.slug);
+  const image = await GetExternalImageInfo(
+    postData.meta.coverImage,
+    "eyeCatch"
+  );
+
+  return {
+    title: postData.meta.title,
+    description: postData.meta.description,
+    openGraph: {
+      images: [image.src],
+    },
+  };
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const postData = await getPost(params.slug);
