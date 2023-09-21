@@ -12,7 +12,7 @@ export default async function Page({
   const PostData = getPosts(category, 1);
   return (
     <div className="container mx-auto max-w-5xl mb-14">
-      <h1 className="mt-5 uppercase text-2xl font-bold">{category}</h1>
+      <h1 className="mt-5 ml-5 uppercase text-2xl font-bold">{category}</h1>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
         {PostData.posts.map((post) => {
