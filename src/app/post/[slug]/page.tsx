@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TWITTER } from "constants/owner";
 import { getPost, getAllPostSlugs } from "services/accessToPost";
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
@@ -23,11 +24,18 @@ export async function generateMetadata({
   return {
     title: postData.meta.title,
     description: postData.meta.description,
+    category: postData.meta.category,
+    keywords: postData.meta.tags,
     openGraph: {
+      title: postData.meta.title,
       images: [image.src],
     },
     twitter: {
+      title: postData.meta.title,
+      description: postData.meta.description,
       images: image.src,
+      site: "@" + TWITTER,
+      creator: "@" + TWITTER,
     },
   };
 }

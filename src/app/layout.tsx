@@ -21,17 +21,20 @@ export const metadata: Metadata = {
     default: SITE_NAME,
   },
   description: SITE_DESCRIPTION,
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-  },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    site: TWITTER,
+    site: "@" + TWITTER,
     images: SITE_IMAGE,
-    creator: TWITTER,
+    creator: "@" + TWITTER,
+  },
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
+    locale: "ja_JP",
+    type: "website",
   },
 };
 

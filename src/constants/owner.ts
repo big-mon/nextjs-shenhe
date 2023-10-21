@@ -1,7 +1,7 @@
 /** owner name */
 export const OWNER: string = "MON";
 
-/** twitter account */
+/** twitter account: without @ mark */
 export const TWITTER: string = "big_mon";
 
 /** github account */
