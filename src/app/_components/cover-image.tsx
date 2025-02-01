@@ -1,3 +1,5 @@
+"use client";
+
 import { CldImage, getCldImageUrl } from "next-cloudinary";
 
 type Props = {
@@ -11,16 +13,28 @@ const CoverImage = ({ title, src, size }: Props) => {
     src: src,
   });
 
-  return (
+  return size === "large" ? (
+    <CldImage
+      src={src}
+      width={1600}
+      height={900}
+      alt={`Cover Image for ${title}`}
+      className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
+      placeholder="blur"
+      blurDataURL={imageUrl}
+      namedTransformations={["hero"]}
+      priority
+    />
+  ) : (
     <CldImage
       src={src}
       width={640}
       height={427}
       alt={`Cover Image for ${title}`}
-      className="w-full object-cover rounded-xl aspect-video"
+      className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
       placeholder="blur"
       blurDataURL={imageUrl}
-      priority={size == "large"}
+      namedTransformations={["eyecatch"]}
     />
   );
 };
