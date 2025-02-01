@@ -1,29 +1,30 @@
-import { getPosts } from "services/accessToTop";
-import PostCard from "components/card";
-import Pagination from "components/pagination";
+import Container from "@/app/_components/container";
+import { HeroPost } from "@/app/_components/hero-post";
+import { Intro } from "@/app/_components/intro";
+import { MoreStories } from "@/app/_components/more-stories";
+import { getAllPosts } from "@/lib/api";
 
-export default function Page() {
-  const posts = getPosts();
+export default function Index() {
+  const allPosts = getAllPosts();
+
+  const heroPost = allPosts[0];
+
+  const morePosts = allPosts.slice(1);
+
   return (
-    <div className="container mx-auto max-w-5xl mb-14">
-      <div className="grid lg:grid-cols-2 gap-6">
-        {posts.posts.slice(0, 2).map((post) => {
-          return <PostCard key={post.slug} data={post} size="large" />;
-        })}
-      </div>
-
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
-        {posts.posts.slice(2).map((post) => {
-          return <PostCard key={post.slug} data={post} size="small" />;
-        })}
-      </div>
-
-      <Pagination
-        type="all"
-        currentPage={1}
-        totalPage={posts.totalPage}
-        prefix={""}
-      />
-    </div>
+    <main>
+      <Container>
+        <Intro />
+        <HeroPost
+          title={heroPost.title}
+          coverImage={heroPost.coverImage}
+          date={heroPost.date}
+          author={heroPost.author}
+          slug={heroPost.slug}
+          excerpt={heroPost.excerpt}
+        />
+        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+      </Container>
+    </main>
   );
 }
