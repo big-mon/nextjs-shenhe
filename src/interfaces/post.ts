@@ -9,5 +9,7 @@ export type Post = {
   description: string;
   ogImage?: string;
   content: string;
+  category: string;
+  tags: string[];
   preview?: boolean;
 };
