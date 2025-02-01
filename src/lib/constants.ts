@@ -1,4 +1,3 @@
-export const EXAMPLE_PATH = "blog-starter";
 export const SITE_NAME = "Shenhe";
 export const SITE_DESCRIPTION = "Next.jsのブログテンプレート";
 export const SITE_IMAGE =
