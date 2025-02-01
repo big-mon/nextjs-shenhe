@@ -2,9 +2,8 @@
 title: 街角の雑学：日常生活に潜む驚きの事実
 description: 日常の中には、私たちが気づかない驚くべき事実が隠されています。街角の雑学を通じて、日常生活の中に眠る知られざる事実を探求しましょう。
 slug: sample5
-date: 2021-10-05
-author: Mon
-image: oajmdfvac2ydbyrudcwo
+date: "2025-01-05T07:00:00+09:00"
+coverImage: oajmdfvac2ydbyrudcwo
 category: 雑学
 tags: ["驚き", 日常生活", "知識"]
 ---

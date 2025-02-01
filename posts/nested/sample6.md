@@ -2,9 +2,8 @@
 title: ナイチンゲール
 description: 中国という国では、みなさんもごぞんじのことと思いますが、皇帝は中国人です。
 slug: sample6
-date: 2021-10-06
-author: Mon
-image: m4lwcsjvf2fsjilp2dso
+date: "2025-01-06T07:00:00+09:00"
+coverImage: m4lwcsjvf2fsjilp2dso
 category: 昔話
 tags: ["中国", "旅行"]
 ---

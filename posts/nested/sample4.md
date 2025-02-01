@@ -2,9 +2,8 @@
 title: 人間の謎めいた嗅覚と香りの魔法
 description: 香りは私たちの日常に不可欠な要素であり、その力には驚くべきものがあります。嗅覚の神秘に迫りつつ、香りが私たちの感情や記憶に与える影響を探ります。
 slug: sample4
-date: 2021-10-04
-author: Mon
-image: gfi3ztohtahsbwksroqx
+date: "2025-01-04T07:00:00+09:00"
+coverImage: gfi3ztohtahsbwksroqx
 category: エッセイ
 tags: ["香り", "嗅覚", "感情"]
 ---

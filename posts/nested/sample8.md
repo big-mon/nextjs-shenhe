@@ -2,9 +2,8 @@
 title: 大ヴォローヂャと小ヴォローヂャ
 description: 「ね、馭者をやって見てもいいでしょう。私、馭者のとこへ行くわ！」とソフィヤ・リヴォヴナが声高に言った
 slug: sample8
-date: 2021-10-08
-author: Mon
-image: l7v6bktbmevxtrinym4i
+date: 2025-01-08T07:00:00+09:00
+coverImage: l7v6bktbmevxtrinym4i
 category: 昔話
 tags: ["日記"]
 ---

@@ -2,9 +2,8 @@
 title: 相対性理論
 description: 「相対性理論」と名づけられる理論が倚りかかっている大黒柱はいわゆる相対性理論です。私はまず相対性原理とは何であるかを明らかにしておこうと思います。
 slug: sample7
-date: 2021-11-04
-author: Mon
-image: sa2vqdeyj26zpdrvbmgb
+date: 2025-01-07T07:00:00+09:00
+coverImage: sa2vqdeyj26zpdrvbmgb
 category: エッセイ
 tags: ["科学"]
 ---

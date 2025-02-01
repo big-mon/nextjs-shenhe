@@ -2,9 +2,8 @@
 title: ハツカネズミと小鳥と腸づめの話
 description: むかしむかし、ハツカネズミと小鳥と腸づめがなかまになって、一家をもちました。長いあいだ、みんなはいいぐあいになかよくくらして、財産もだいぶこしらえました。
 slug: sample11
-date: 2021-11-04
-author: Mon
-image: waobhkmtac9vehog5cd8
+date: 2025-01-11T07:00:00+09:00
+coverImage: waobhkmtac9vehog5cd8
 category: 昔話
 tags: ["ネズミ"]
 ---

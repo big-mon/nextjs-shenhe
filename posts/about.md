@@ -4,7 +4,7 @@ description: Next.js向けブログテンプレートの紹介
 slug: about
 date: 2021-12-31
 author: Mon
-image: fr2hbemgc6vjlxuk0syu
+coverImage: fr2hbemgc6vjlxuk0syu
 category: Other
 tags: []
 ---

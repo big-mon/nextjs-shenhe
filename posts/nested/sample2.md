@@ -2,9 +2,8 @@
 title: ぼくのユニークな日常
 description: この時妙なものだと思った感じが今でも残っている。
 slug: sample2
-date: 2021-10-02
-author: Mon
-image: iygtjxtsrs1hgqbihrer
+date: "2025-01-02T07:00:00+09:00"
+coverImage: iygtjxtsrs1hgqbihrer
 category: 旅行
 tags: []
 ---

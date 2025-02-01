@@ -2,9 +2,8 @@
 title: ネコとネズミのいっしょのくらし
 description: ネコがネズミと知りあいになりました。ネコはネズミにむかって、これからきみをうんとかわいがって、なかよくしてあげるよ、と、さかんにうまいことをいいたてました。
 slug: sample9
-date: 2021-10-09
-author: Mon
-image: upgl6186rytxb1frju6x
+date: 2025-01-09T07:00:00+09:00
+coverImage: upgl6186rytxb1frju6x
 category: エッセイ
 tags: ["ネコ", "ネズミ"]
 ---
