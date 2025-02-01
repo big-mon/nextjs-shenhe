@@ -1,14 +1,16 @@
 import Link from "next/link";
+import Logo from "@/app/_components/icon/logo";
 
-const Header = () => {
+const GlobalHeader = () => {
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 flex items-center">
-      <Link href="/" className="hover:underline">
-        Blog
-      </Link>
-      .
-    </h2>
+    <header className="container mx-auto max-w-5xl">
+      <div className="flex flex-wrap items-center justify-between px-5 py-5 md:py-6">
+        <Link href="/">
+          <Logo size={32} />
+        </Link>
+      </div>
+    </header>
   );
 };
 
-export default Header;
+export default GlobalHeader;
