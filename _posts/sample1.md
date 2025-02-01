@@ -2,7 +2,10 @@
 title: サンプルの旅行日記
 description: 緑豊かな山々と青い空が心を和ませてくれます。
 slug: sample1
-date: "2025-01-01T07:00:00+09:00"
+date: 2025-01-01T07:00:00
+author:
+  name: Mon
+  picture: /assets/blog/authors/tim.jpeg
 coverImage: r9o8w7svb6vjvk9gfjjh
 category: 旅行
 tags: ["日記"]

@@ -2,7 +2,10 @@
 title: オオカミと七ひきの子ヤギ
 description: 「さきに足を見せてごらん、そうすりゃ、ぼくたちのおかあさんかどうか、わかるから。」
 slug: sample10
-date: 2025-01-10T07:00:00+09:00
+date: 2025-01-10T07:00:00
+author:
+  name: Mon
+  picture: /assets/blog/authors/tim.jpeg
 coverImage: dfxk6efbqnmtgnhim9nd
 category: 昔話
 tags: ["ヤギ"]

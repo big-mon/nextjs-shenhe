@@ -2,7 +2,10 @@
 title: Lorem Ipsum
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 slug: sample3
-date: "2025-01-03T07:00:00+09:00"
+date: 2025-01-03T07:00:00
+author:
+  name: Mon
+  picture: /assets/blog/authors/tim.jpeg
 coverImage: senwyvqbxvxpvmhc5kzz
 category: sample
 tags: ["tag1", "tag2"]
