@@ -7,10 +7,13 @@ import {
   SITE_IMAGE,
 } from "@/lib/constants";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const mainFont = Noto_Serif_JP({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -45,7 +48,9 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000" />
       </head>
-      <body className={inter.className}>
+      <body
+        className={`${mainFont.className} bg-white text-gray-900 overflow-x-hidden`}
+      >
         <GlobalHeader />
         {children}
         <Footer />
