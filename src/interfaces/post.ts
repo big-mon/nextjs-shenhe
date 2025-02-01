@@ -7,9 +7,7 @@ export type Post = {
   coverImage: string;
   author: Author;
   description: string;
-  /*ogImage: {
-    url: string;
-  };*/
+  ogImage?: string;
   content: string;
   preview?: boolean;
 };

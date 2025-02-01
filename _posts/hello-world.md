@@ -6,8 +6,7 @@ author:
   picture: /assets/blog/authors/tim.jpeg
 coverImage: "fr2hbemgc6vjlxuk0syu"
 date: 2025-02-02T07:00:00
-ogImage:
-  url: "/assets/blog/hello-world/cover.jpg"
+ogImage: /assets/blog/hello-world/cover.jpg
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.

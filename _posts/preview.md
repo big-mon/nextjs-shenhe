@@ -6,8 +6,7 @@ author:
   picture: /assets/blog/authors/tim.jpeg
 coverImage: fr2hbemgc6vjlxuk0syu
 date: 2025-02-03T07:00:00
-ogImage:
-  url: "/assets/blog/preview/cover.jpg"
+ogImage: /assets/blog/preview/cover.jpg
 preview: true
 ---
 
