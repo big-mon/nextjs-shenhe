@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Icon from "@/app/icon.svg";
@@ -9,8 +10,10 @@ export default function Logo() {
   const pathname = usePathname();
   const isTopPage = pathname === "/";
 
-  return isTopPage ? (
-    <h1 className="flex justify-center items-center">
+  return React.createElement(
+    isTopPage ? "h1" : "div",
+    { className: "flex justify-center items-center" },
+    <>
       <Image
         className="mr-3 inline"
         src={Icon}
@@ -19,17 +22,6 @@ export default function Logo() {
         height={32}
       />
       <span className="text-xl">{SITE_NAME}</span>
-    </h1>
-  ) : (
-    <div className="flex justify-center items-center">
-      <Image
-        className="mr-3 inline"
-        src={Icon}
-        alt={SITE_NAME}
-        width={32}
-        height={32}
-      />
-      <span className="text-xl">{SITE_NAME}</span>
-    </div>
+    </>
   );
 }
