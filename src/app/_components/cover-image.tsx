@@ -1,5 +1,4 @@
-import Image from "next/image";
-import { getImageSize } from "@/lib/getImageSize";
+import { CldImage, getCldImageUrl } from "next-cloudinary";
 
 type Props = {
   title: string;
@@ -7,20 +6,20 @@ type Props = {
   size: "large" | "small";
 };
 
-const CoverImage = async ({ title, src, size }: Props) => {
-  const imageData = await getImageSize(src);
+const CoverImage = ({ title, src, size }: Props) => {
+  const imageUrl = getCldImageUrl({
+    src: src,
+  });
+
   return (
-    <Image
+    <CldImage
       src={src}
-      width={imageData.width}
-      height={imageData.height}
+      width={640}
+      height={427}
       alt={`Cover Image for ${title}`}
       className="w-full object-cover rounded-xl aspect-video"
-      sizes={
-        size == "large"
-          ? "(max-width: 1024px) 100vw, 460px"
-          : "(max-width: 1024px) 100vw, 286px"
-      }
+      placeholder="blur"
+      blurDataURL={imageUrl}
       priority={size == "large"}
     />
   );
