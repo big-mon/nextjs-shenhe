@@ -20,7 +20,7 @@ export function MoreStories({ posts }: Props) {
             date={post.date}
             author={post.author}
             slug={post.slug}
-            excerpt={post.excerpt}
+            excerpt={post.description}
           />
         ))}
       </div>
