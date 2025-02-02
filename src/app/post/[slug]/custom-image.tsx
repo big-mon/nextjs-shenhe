@@ -14,7 +14,7 @@ export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
   const imageUrl = getCloudinaryImageUrl(src);
 
   return (
-    <div class="relative block">
+    <span className="relative block">
       <CldImage
         src={src}
         alt={alt}
@@ -28,6 +28,6 @@ export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
       {title === "" ? null : (
         <span className="block text-center text-gray-500">{title}</span>
       )}
-    </div>
+    </span>
   );
 };
