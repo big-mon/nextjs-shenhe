@@ -2,6 +2,7 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import { remarkBlockLink } from "@lib/markdown/remark-block-link";
 import CustomImage from "./custom-image";
+import styles from "./markdown.module.scss";
 
 /**
  * Markdownテキストを解析してReactコンポーネントを生成する
@@ -130,7 +131,7 @@ const HeadingNode = ({ node }) => {
 
   // ID属性に取得したテキストをエンコードして設定
   return (
-    <Component id={encodeURIComponent(childrenText)}>
+    <Component id={encodeURIComponent(childrenText)} className={styles.heading}>
       <NodesRenderer nodes={node.children} />
     </Component>
   );
@@ -148,7 +149,7 @@ const TextNode = ({ node }) => {
  */
 const ParagraphNode = ({ node }) => {
   return (
-    <p>
+    <p className={styles.paragraph}>
       <NodesRenderer nodes={node.children} />
     </p>
   );
@@ -299,7 +300,12 @@ const ThematicBreakNode = () => {
  */
 const CodeNode = ({ node }) => {
   const lang = node.lang ?? "";
-  return <div dangerouslySetInnerHTML={{ __html: node.value }} />;
+  return (
+    <div
+      className={styles.codeblock}
+      dangerouslySetInnerHTML={{ __html: node.value }}
+    />
+  );
 };
 
 /**
