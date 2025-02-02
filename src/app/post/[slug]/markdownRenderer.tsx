@@ -1,6 +1,7 @@
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import { remarkBlockLink } from "@lib/markdown/remark-block-link";
+import CustomImage from "./custom-image";
 
 /**
  * Markdownテキストを解析してReactコンポーネントを生成する
@@ -36,6 +37,50 @@ const NodesRenderer = ({ nodes }) => {
       case "paragraph": {
         // 段落ノード
         return <ParagraphNode key={index} node={node} />;
+      }
+      case "inlineCode": {
+        // インラインコードノード
+        return <InlineCodeNode key={index} node={node} />;
+      }
+      case "blockquote": {
+        // ブロック引用ノード
+        return <BlockQuoteNode key={index} node={node} />;
+      }
+      case "link": {
+        // リンクノード
+        return <LinkNode key={index} node={node} />;
+      }
+      case "list": {
+        // リストノード
+        return <ListNode key={index} node={node} />;
+      }
+      case "listItem": {
+        // リストアイテムノード
+        return <ListItemNode key={index} node={node} />;
+      }
+      case "strong": {
+        // 太字ノード
+        return <StrongNode key={index} node={node} />;
+      }
+      case "image": {
+        // 画像ノード
+        return <ImageNode key={index} node={node} />;
+      }
+      case "code": {
+        // コードブロックノード
+        return <CodeNode key={index} node={node} />;
+      }
+      case "delete": {
+        // 削除ノード
+        return <DeleteNode key={index} node={node} />;
+      }
+      case "table": {
+        // 表ノード
+        return <TableNode key={index} node={node} />;
+      }
+      case "thematicBreak": {
+        // 水平線ノード
+        return <ThematicBreakNode key={index} node={node} />;
       }
       case "block-link": {
         // ブロックリンクノード
@@ -110,11 +155,159 @@ const ParagraphNode = ({ node }) => {
 };
 
 /**
+ * インラインコードノードのレンダリング定義
+ */
+const InlineCodeNode = ({ node }) => {
+  return <code>{node.value}</code>;
+};
+
+/**
+ * ブロック引用ノードのレンダリング定義
+ */
+const BlockQuoteNode = ({ node }) => {
+  return (
+    <blockquote>
+      <NodesRenderer nodes={node.children} />
+    </blockquote>
+  );
+};
+
+/**
+ * リンクノードのレンダリング定義
+ */
+const LinkNode = ({ node }) => {
+  return (
+    <a href={node.url} target="_blank" rel="noreferrer">
+      <NodesRenderer nodes={node.children} />
+    </a>
+  );
+};
+
+/**
+ * リストノードのレンダリング定義
+ */
+const ListNode = ({ node }) => {
+  return node.ordered ? (
+    <ol>
+      <NodesRenderer nodes={node.children} />
+    </ol>
+  ) : (
+    <ul>
+      <NodesRenderer nodes={node.children} />
+    </ul>
+  );
+};
+
+/**
+ * リストアイテムノードのレンダリング定義
+ */
+const ListItemNode = ({ node }) => {
+  if (node.children.length === 1 && node.children[0].type === "paragraph") {
+    return (
+      <li>
+        <NodesRenderer nodes={node.children[0].children} />
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <NodesRenderer nodes={node.children} />
+    </li>
+  );
+};
+
+/**
+ * 太字ノードのレンダリング定義
+ */
+const StrongNode = ({ node }) => {
+  return (
+    <strong>
+      <NodesRenderer nodes={node.children} />
+    </strong>
+  );
+};
+
+/**
+ * 画像ノードのレンダリング定義
+ */
+const ImageNode = ({ node }) => {
+  return (
+    <a href={node.url} target="_blank" rel="noreferrer">
+      <CustomImage src={node.url} alt={node.alt ?? ""} />
+    </a>
+  );
+};
+
+/**
+ * 削除ノードのレンダリング定義
+ */
+const DeleteNode = ({ node }) => {
+  return (
+    <del>
+      <NodesRenderer nodes={node.children} />
+    </del>
+  );
+};
+
+/**
+ * 表ノードのレンダリング定義
+ */
+const TableNode = ({ node }) => {
+  const [headRow, ...bodyRows] = node.children;
+  return (
+    <table>
+      <thead>
+        <tr>
+          {headRow.children.map((cell, index) => (
+            <th
+              key={index}
+              style={{ textAlign: node.align?.[index] ?? undefined }}
+            >
+              <NodesRenderer nodes={cell.children} />
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {bodyRows.map((row, index) => (
+          <tr key={index}>
+            {row.children.map((cell, index) => (
+              <td
+                key={index}
+                style={{ textAlign: node.align?.[index] ?? undefined }}
+              >
+                <NodesRenderer nodes={cell.children} />
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+};
+
+/**
+ * 水平線ノードのレンダリング定義
+ */
+const ThematicBreakNode = () => {
+  return <hr />;
+};
+
+/**
+ * コードブロックノードのレンダリング定義
+ */
+const CodeNode = ({ node }) => {
+  const lang = node.lang ?? "";
+  return <div dangerouslySetInnerHTML={{ __html: node.value }} />;
+};
+
+/**
  * ブロックリンクノードのレンダリング定義
  */
 const BlockLinkNode = ({ node }) => {
   return (
-    <div className={classes.embeded}>
+    <div>
       <RichLinkCard href={node.url} isExternal />
     </div>
   );
