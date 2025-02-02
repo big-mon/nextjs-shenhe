@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { SITE_NAME } from "@/lib/constants";
 import markdownToHtml from "@/lib/markdownToHtml";
-import Container from "@/app/_components/container";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
+import { getCloudinaryImageOgpUrl } from "@/lib/cloudinary";
 
 export default async function Post(props: Params) {
   const params = await props.params;
@@ -18,18 +17,16 @@ export default async function Post(props: Params) {
   const content = await markdownToHtml(post.content || "");
 
   return (
-    <main>
-      <Container>
-        <article className="mb-32">
-          <PostHeader
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-          />
-          <PostBody content={content} />
-        </article>
-      </Container>
+    <main className="container mx-auto max-w-5xl">
+      <article className="mb-32">
+        <PostHeader
+          title={post.title}
+          coverImage={post.coverImage}
+          date={post.date}
+          author={post.author}
+        />
+        <PostBody content={content} />
+      </article>
     </main>
   );
 }
@@ -48,13 +45,15 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
     return notFound();
   }
 
-  const title = `${post.title} | Next.js Blog Example with ${SITE_NAME}`;
-
   return {
-    title,
+    title: post.title,
     openGraph: {
-      title,
-      images: [post.ogImage ? post.ogImage : post.coverImage],
+      title: post.title,
+      images: [
+        post.ogImage
+          ? getCloudinaryImageOgpUrl("/illust/" + post.ogImage)
+          : getCloudinaryImageOgpUrl("/illust/" + post.coverImage),
+      ],
     },
   };
 }
