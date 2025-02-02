@@ -134,10 +134,12 @@ Shenhe は Next.js 向けに作成されたブログテンプレートです。N
 ```md
 ![alt](/illust/oajmdfvac2ydbyrudcwo)
 ![alt](/illust/ar6fbsinlkhklveegkta "caption")
+![photo](/photo/dgmplxtjcfop3h3rqfde)
 ```
 
 ![alt](/illust/oajmdfvac2ydbyrudcwo)
 ![alt](/illust/ar6fbsinlkhklveegkta "caption")
+![photo](/photo/dgmplxtjcfop3h3rqfde)
 
 # 引用
 

@@ -14,16 +14,20 @@ export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
   const imageUrl = getCloudinaryImageUrl(src);
 
   return (
-    <CldImage
-      src={src}
-      width={1600}
-      height={900}
-      alt={alt}
-      className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
-      placeholder="blur"
-      blurDataURL={imageUrl}
-      namedTransformations={["post"]}
-      priority
-    />
+    <div class="relative block">
+      <CldImage
+        src={src}
+        alt={alt}
+        width={860}
+        height={860}
+        placeholder="blur"
+        blurDataURL={imageUrl}
+        namedTransformations={["post"]}
+        sizes="(max-width: 672px) 100vw, 672px"
+      />
+      {title === "" ? null : (
+        <span className="block text-center text-gray-500">{title}</span>
+      )}
+    </div>
   );
 };
