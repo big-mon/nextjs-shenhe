@@ -1,7 +1,6 @@
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
-import { remarkBlockLink } from "@lib/markdown/remark-block-link";
 import { CustomImage } from "./custom-image";
 import styles from "./markdown.module.scss";
 
@@ -10,10 +9,7 @@ import styles from "./markdown.module.scss";
  */
 export const MarkdownRenderer = async ({ children }) => {
   // remarkインスタンスを生成しプラグインを適用
-  const parseMarkdown = remark()
-    .use(remarkBlockLink)
-    .use(remarkBreaks)
-    .use(remarkGfm);
+  const parseMarkdown = remark().use(remarkBreaks).use(remarkGfm);
 
   // Markdownテキストを解析し、Markdown Abstract Syntax Treeを生成
   const parsed = parseMarkdown.parse(children);
