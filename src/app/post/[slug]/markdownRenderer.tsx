@@ -37,23 +37,35 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "text": {
         // テキストノード
-        return <TextNode key={index} node={node} />;
+        return node.value;
       }
       case "paragraph": {
         // 段落ノード
-        return <ParagraphNode key={index} node={node} />;
+        return (
+          <p className={styles.paragraph}>
+            <NodesRenderer nodes={node.children} />
+          </p>
+        );
       }
       case "inlineCode": {
         // インラインコードノード
-        return <InlineCodeNode key={index} node={node} />;
+        return <code>{node.value}</code>;
       }
       case "blockquote": {
         // ブロック引用ノード
-        return <BlockQuoteNode key={index} node={node} />;
+        return (
+          <blockquote className={styles.blockquote}>
+            <NodesRenderer nodes={node.children} />
+          </blockquote>
+        );
       }
       case "link": {
         // リンクノード
-        return <LinkNode key={index} node={node} />;
+        return (
+          <a href={node.url} target="_blank" rel="noreferrer">
+            <NodesRenderer nodes={node.children} />
+          </a>
+        );
       }
       case "list": {
         // リストノード
@@ -65,27 +77,44 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "strong": {
         // 太字ノード
-        return <StrongNode key={index} node={node} />;
+        return (
+          <strong>
+            <NodesRenderer nodes={node.children} />
+          </strong>
+        );
       }
       case "emphasis": {
         // 斜体ノード
-        return <EmphasisNode key={index} node={node} />;
+        return (
+          <em>
+            <NodesRenderer nodes={node.children} />
+          </em>
+        );
       }
       case "break": {
         // 改行ノード
-        return <BreakNode key={index} node={node} />;
+        return <br />;
       }
       case "image": {
         // 画像ノード
-        return <ImageNode key={index} node={node} />;
+        return <CustomImage src={node.url} alt={node.alt ?? ""} />;
       }
       case "code": {
         // コードブロックノード
-        return <CodeNode key={index} node={node} />;
+        return (
+          <div
+            className={styles.codeblock}
+            dangerouslySetInnerHTML={{ __html: node.value }}
+          />
+        );
       }
       case "delete": {
         // 削除ノード
-        return <DeleteNode key={index} node={node} />;
+        return (
+          <del>
+            <NodesRenderer nodes={node.children} />
+          </del>
+        );
       }
       case "table": {
         // 表ノード
@@ -93,11 +122,17 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "thematicBreak": {
         // 水平線ノード
-        return <ThematicBreakNode key={index} node={node} />;
+        return <hr />;
       }
-      case "block-link": {
-        // ブロックリンクノード
-        return <BlockLinkNode key={index} node={node} />;
+      case "html": {
+        // HTMLノード
+        return (
+          <div
+            className={styles.box}
+            key={index}
+            dangerouslySetInnerHTML={{ __html: node.value }}
+          />
+        );
       }
       default: {
         // 未知のノード
@@ -150,62 +185,15 @@ const HeadingNode = ({ node }) => {
 };
 
 /**
- * テキストノードのレンダリング定義
- */
-const TextNode = ({ node }) => {
-  return node.value;
-};
-
-/**
- * 段落ノードのレンダリング定義
- */
-const ParagraphNode = ({ node }) => {
-  return (
-    <p className={styles.paragraph}>
-      <NodesRenderer nodes={node.children} />
-    </p>
-  );
-};
-
-/**
- * インラインコードノードのレンダリング定義
- */
-const InlineCodeNode = ({ node }) => {
-  return <code>{node.value}</code>;
-};
-
-/**
- * ブロック引用ノードのレンダリング定義
- */
-const BlockQuoteNode = ({ node }) => {
-  return (
-    <blockquote>
-      <NodesRenderer nodes={node.children} />
-    </blockquote>
-  );
-};
-
-/**
- * リンクノードのレンダリング定義
- */
-const LinkNode = ({ node }) => {
-  return (
-    <a href={node.url} target="_blank" rel="noreferrer">
-      <NodesRenderer nodes={node.children} />
-    </a>
-  );
-};
-
-/**
  * リストノードのレンダリング定義
  */
 const ListNode = ({ node }) => {
   return node.ordered ? (
-    <ol>
+    <ol className={styles.list}>
       <NodesRenderer nodes={node.children} />
     </ol>
   ) : (
-    <ul>
+    <ul className={styles.list}>
       <NodesRenderer nodes={node.children} />
     </ul>
   );
@@ -231,70 +219,16 @@ const ListItemNode = ({ node }) => {
 };
 
 /**
- * 太字ノードのレンダリング定義
- */
-const StrongNode = ({ node }) => {
-  return (
-    <strong>
-      <NodesRenderer nodes={node.children} />
-    </strong>
-  );
-};
-
-/**
- * 斜体ノードのレンダリング定義
- */
-const EmphasisNode = ({ node }) => {
-  return (
-    <em>
-      <NodesRenderer nodes={node.children} />
-    </em>
-  );
-};
-
-/**
- * 改行ノードのレンダリング定義
- */
-const BreakNode = ({ node }) => {
-  return <br />;
-};
-
-/**
- * 画像ノードのレンダリング定義
- */
-const ImageNode = ({ node }) => {
-  return (
-    <a href={node.url} target="_blank" rel="noreferrer">
-      <CustomImage src={node.url} alt={node.alt ?? ""} />
-    </a>
-  );
-};
-
-/**
- * 削除ノードのレンダリング定義
- */
-const DeleteNode = ({ node }) => {
-  return (
-    <del>
-      <NodesRenderer nodes={node.children} />
-    </del>
-  );
-};
-
-/**
  * 表ノードのレンダリング定義
  */
 const TableNode = ({ node }) => {
   const [headRow, ...bodyRows] = node.children;
   return (
-    <table>
+    <table className={styles.table}>
       <thead>
         <tr>
           {headRow.children.map((cell, index) => (
-            <th
-              key={index}
-              style={{ textAlign: node.align?.[index] ?? undefined }}
-            >
+            <th key={index} className={styles[node.align?.[index] ?? "left"]}>
               <NodesRenderer nodes={cell.children} />
             </th>
           ))}
@@ -304,10 +238,7 @@ const TableNode = ({ node }) => {
         {bodyRows.map((row, index) => (
           <tr key={index}>
             {row.children.map((cell, index) => (
-              <td
-                key={index}
-                style={{ textAlign: node.align?.[index] ?? undefined }}
-              >
+              <td key={index} className={styles[node.align?.[index] ?? "left"]}>
                 <NodesRenderer nodes={cell.children} />
               </td>
             ))}
@@ -315,36 +246,5 @@ const TableNode = ({ node }) => {
         ))}
       </tbody>
     </table>
-  );
-};
-
-/**
- * 水平線ノードのレンダリング定義
- */
-const ThematicBreakNode = () => {
-  return <hr />;
-};
-
-/**
- * コードブロックノードのレンダリング定義
- */
-const CodeNode = ({ node }) => {
-  const lang = node.lang ?? "";
-  return (
-    <div
-      className={styles.codeblock}
-      dangerouslySetInnerHTML={{ __html: node.value }}
-    />
-  );
-};
-
-/**
- * ブロックリンクノードのレンダリング定義
- */
-const BlockLinkNode = ({ node }) => {
-  return (
-    <div>
-      <RichLinkCard href={node.url} isExternal />
-    </div>
   );
 };
