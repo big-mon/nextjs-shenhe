@@ -1,8 +1,7 @@
 import { Post } from "@/interfaces/post";
 import fs from "fs";
-import path from "path";
 import matter from "gray-matter";
-import { join } from "path";
+import { join, resolve } from "path";
 
 // ブログ記事のディレクトリパス
 const postsDirectory = join(process.cwd(), "_posts");
@@ -16,7 +15,7 @@ const retrieveFiles = (directory: string): string[] => {
   const entries = fs.readdirSync(directory, { withFileTypes: true });
 
   return entries.flatMap((entry) => {
-    const fullPath = path.resolve(directory, entry.name); // 相対パスを解決
+    const fullPath = resolve(directory, entry.name); // 相対パスを解決
 
     if (entry.isDirectory()) {
       return retrieveFiles(fullPath); // 再帰呼び出し
