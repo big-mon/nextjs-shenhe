@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { SITE_NAME, TWITTER, GITHUB } from "@/lib/constants";
-import { type Social } from "@/interfaces/social";
+import { SITE_NAME, TWITTER, GITHUB } from "@lib/constants";
+import { type Social } from "@interfaces/social";
 
 const SocialLink = ({ href, children, label }: Social) => (
   <a

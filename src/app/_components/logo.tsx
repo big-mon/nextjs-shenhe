@@ -3,8 +3,8 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Icon from "@/app/icon.svg";
-import { SITE_NAME } from "@/lib/constants";
+import Icon from "../icon.svg";
+import { SITE_NAME } from "@lib/constants";
 
 export default function Logo() {
   const pathname = usePathname();

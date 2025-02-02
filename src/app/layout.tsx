@@ -1,11 +1,11 @@
-import GlobalHeader from "@/app/_components/header";
-import Footer from "@/app/_components/footer";
+import GlobalHeader from "@components/header";
+import Footer from "@components/footer";
 import {
   SITE_NAME,
   SITE_DESCRIPTION,
   TWITTER,
   SITE_IMAGE,
-} from "@/lib/constants";
+} from "@lib/constants";
 import type { Metadata } from "next";
 import { Noto_Serif_JP } from "next/font/google";
 import "./globals.css";

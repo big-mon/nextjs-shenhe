@@ -1,7 +1,7 @@
 "use client";
 
 import { CldImage } from "next-cloudinary";
-import { getCloudinaryImageUrl } from "@/lib/cloudinary";
+import { getCloudinaryImageUrl } from "@lib/cloudinary";
 
 type Props = {
   title: string;

@@ -1,5 +1,5 @@
-import { MoreStories } from "@/app/_components/more-stories";
-import { getAllPosts } from "@/lib/api";
+import { MoreStories } from "@components/more-stories";
+import { getAllPosts } from "@lib/api";
 
 export default function Index() {
   const allPosts = getAllPosts();
