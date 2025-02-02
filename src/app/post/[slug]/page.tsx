@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/api";
-import markdownToHtml from "@/lib/markdownToHtml";
-import { PostBody } from "@/app/_components/post-body";
-import { PostHeader } from "@/app/_components/post-header";
-import { getCloudinaryImageOgpUrl } from "@/lib/cloudinary";
+import { getAllPosts, getPostBySlug } from "@lib/api";
+import { PostBody } from "./post-body";
+import { PostHeader } from "./post-header";
+import { getCloudinaryImageOgpUrl } from "@lib/cloudinary";
 
 export default async function Post(props: Params) {
   const params = await props.params;
@@ -13,8 +12,6 @@ export default async function Post(props: Params) {
   if (!post) {
     return notFound();
   }
-
-  const content = await markdownToHtml(post.content || "");
 
   return (
     <main className="container mx-auto max-w-5xl">
@@ -25,7 +22,7 @@ export default async function Post(props: Params) {
           date={post.date}
           author={post.author}
         />
-        <PostBody content={content} />
+        <PostBody content={post.content} />
       </article>
     </main>
   );
