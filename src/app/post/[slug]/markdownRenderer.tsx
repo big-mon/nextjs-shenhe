@@ -2,7 +2,7 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { remarkBlockLink } from "@lib/markdown/remark-block-link";
-import CustomImage from "./custom-image";
+import { CustomImage } from "./custom-image";
 import styles from "./markdown.module.scss";
 
 /**
@@ -35,7 +35,9 @@ const NodesRenderer = ({ nodes }) => {
         // 見出しノード(h1など)
         return <HeadingNode key={index} node={node} />;
       }
-      case "text": {
+      case "text":
+      case "linkReference":
+      case "definition": {
         // テキストノード
         return node.value;
       }
@@ -97,7 +99,7 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "image": {
         // 画像ノード
-        return <CustomImage src={node.url} alt={node.alt ?? ""} />;
+        return <CustomImage src={node.url} alt={node.alt} title={node.title} />;
       }
       case "code": {
         // コードブロックノード
@@ -122,7 +124,7 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "thematicBreak": {
         // 水平線ノード
-        return <hr />;
+        return <hr className={styles.line} />;
       }
       case "html": {
         // HTMLノード

@@ -7,9 +7,10 @@ import Image from "next/image";
 type Props = {
   src: string;
   alt?: string;
+  title?: string;
 };
 
-const CustomImage = ({ src, alt = "" }: Props) => {
+export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
   const imageUrl = getCloudinaryImageUrl(src);
 
   return (
@@ -26,5 +27,3 @@ const CustomImage = ({ src, alt = "" }: Props) => {
     />
   );
 };
-
-export default CustomImage;
