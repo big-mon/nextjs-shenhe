@@ -40,8 +40,92 @@ p.paragraph {
 
 div.codeblock {
   white-space: pre;
-  --tw-bg-opacity: 1;
-  background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1));
+  background-color: rgb(242 242 242);
   margin-bottom: 1.5rem;
   padding: 1rem 0.5rem;
+}
+div.box {
+  margin-bottom: 1.5rem;
+}
+
+table.table {
+  width: 100%;
+  min-width: max-content;
+  margin-bottom: 1.5rem;
+
+  th {
+    background-color: rgb(242 242 242);
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid rgb(0 0 0);
+    padding: 1.5rem 1rem;
+
+    &.left {
+      text-align: left;
+    }
+    &.right {
+      text-align: right;
+    }
+    &.center {
+      text-align: center;
+    }
+  }
+}
+
+ol.list,
+ul.list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+
+  li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    ol,
+    ul,
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+ol.list {
+  list-style-type: decimal;
+}
+
+ul.list {
+  list-style-type: circle;
+}
+
+blockquote.blockquote {
+  background-color: rgb(242 242 242);
+  margin-bottom: 1.5rem;
+  padding: 1rem 0.5rem 1rem 4rem;
+
+  position: relative;
+  overflow: hidden;
+  min-height: 6rem;
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+
+  &:before {
+    content: "“";
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  &:after {
+    content: "”";
+    position: absolute;
+    bottom: -7rem;
+    right: 0.5rem;
+    font-size: 10rem;
+    opacity: 0.2;
+  }
 }
