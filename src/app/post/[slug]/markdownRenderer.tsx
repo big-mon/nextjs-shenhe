@@ -1,5 +1,6 @@
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
+import remarkBreaks from "remark-breaks";
 import { remarkBlockLink } from "@lib/markdown/remark-block-link";
 import CustomImage from "./custom-image";
 import styles from "./markdown.module.scss";
@@ -9,7 +10,10 @@ import styles from "./markdown.module.scss";
  */
 export const MarkdownRenderer = async ({ children }) => {
   // remarkインスタンスを生成しプラグインを適用
-  const parseMarkdown = remark().use(remarkBlockLink).use(remarkGfm);
+  const parseMarkdown = remark()
+    .use(remarkBlockLink)
+    .use(remarkBreaks)
+    .use(remarkGfm);
 
   // Markdownテキストを解析し、Markdown Abstract Syntax Treeを生成
   const parsed = parseMarkdown.parse(children);
@@ -62,6 +66,14 @@ const NodesRenderer = ({ nodes }) => {
       case "strong": {
         // 太字ノード
         return <StrongNode key={index} node={node} />;
+      }
+      case "emphasis": {
+        // 斜体ノード
+        return <EmphasisNode key={index} node={node} />;
+      }
+      case "break": {
+        // 改行ノード
+        return <BreakNode key={index} node={node} />;
       }
       case "image": {
         // 画像ノード
@@ -227,6 +239,24 @@ const StrongNode = ({ node }) => {
       <NodesRenderer nodes={node.children} />
     </strong>
   );
+};
+
+/**
+ * 斜体ノードのレンダリング定義
+ */
+const EmphasisNode = ({ node }) => {
+  return (
+    <em>
+      <NodesRenderer nodes={node.children} />
+    </em>
+  );
+};
+
+/**
+ * 改行ノードのレンダリング定義
+ */
+const BreakNode = ({ node }) => {
+  return <br />;
 };
 
 /**

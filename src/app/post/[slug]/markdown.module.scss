@@ -39,6 +39,7 @@ p.paragraph {
 }
 
 div.codeblock {
+  white-space: pre;
   --tw-bg-opacity: 1;
   background-color: rgb(242 242 242 / var(--tw-bg-opacity, 1));
   margin-bottom: 1.5rem;
