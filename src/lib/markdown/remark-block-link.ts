@@ -1,8 +1,7 @@
 import { Root } from "mdast";
-import { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
-export const remarkBlockLink: Plugin<[], Root> = function () {
+export const remarkBlockLink = function () {
   return (tree: Root) => {
     visit(tree, "paragraph", (node, index, parent) => {
       const maybeLink = node.children[0];
