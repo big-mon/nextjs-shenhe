@@ -119,13 +119,13 @@ Shenhe は Next.js 向けに作成されたブログテンプレートです。N
 
 ```md
 [リンクテキスト](https://example.com/)
-[この書き方もできます][1]
+[この書き方はできません][1]
 
 [1]: https://example.com/
 ```
 
 [リンクテキスト](https://example.com/)
-[この書き方もできます][1]
+[この書き方はできません][1]
 
 [1]: https://example.com/
 

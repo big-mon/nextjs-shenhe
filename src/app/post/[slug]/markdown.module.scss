@@ -129,3 +129,16 @@ blockquote.blockquote {
     opacity: 0.2;
   }
 }
+
+hr.line {
+  border: 0;
+  text-align: center;
+  height: auto;
+  margin-bottom: 1.5rem;
+
+  &:before {
+    content: "\2022 \2022 \2022";
+    font-size: 2rem;
+    opacity: 0.4;
+  }
+}
