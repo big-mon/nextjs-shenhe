@@ -8,7 +8,7 @@ import {
 } from "@lib/constants";
 import type { Metadata } from "next";
 import { Noto_Serif_JP } from "next/font/google";
-import "./globals.css";
+import "@styles/globals.css";
 
 const mainFont = Noto_Serif_JP({
   subsets: ["latin"],

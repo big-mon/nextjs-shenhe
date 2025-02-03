@@ -2,7 +2,6 @@
 
 import { CldImage } from "next-cloudinary";
 import { getCloudinaryImageUrl } from "@lib/cloudinary";
-import Image from "next/image";
 
 type Props = {
   src: string;

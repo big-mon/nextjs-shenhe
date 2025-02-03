@@ -2,7 +2,7 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { CustomImage } from "./custom-image";
-import styles from "./markdown.module.scss";
+import styles from "@styles/markdown.module.scss";
 
 /**
  * Markdownテキストを解析してReactコンポーネントを生成する

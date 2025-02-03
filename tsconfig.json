@@ -19,9 +19,10 @@
       }
     ],
     "paths": {
-      "@components/*": ["/app/_components/*"],
-      "@interfaces/*": ["/app/_interfaces/*"],
-      "@lib/*": ["/lib/*"]
+      "@components/*": ["app/_components/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@lib/*": ["lib/*"],
+      "@styles/*": ["styles/*"]
     },
     "target": "ES2017"
   },

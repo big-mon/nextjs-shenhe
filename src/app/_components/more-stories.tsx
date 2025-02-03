@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { Post } from "@/interfaces/post";
+import { Post } from "@interfaces/post";
 import { PostPreview } from "./post-preview";
 
 type Props = {
