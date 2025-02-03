@@ -2,12 +2,36 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { CustomImage } from "./custom-image";
+import {
+  Root,
+  Content,
+  Heading,
+  Paragraph,
+  List,
+  ListItem,
+  Table,
+  TableRow,
+  TableCell,
+  Code,
+  HTML,
+  Link,
+  Blockquote,
+  Text,
+  Strong,
+  Emphasis,
+  Break,
+  Delete,
+  ThematicBreak,
+  InlineCode,
+  Image,
+} from "mdast";
+
 import styles from "@styles/markdown.module.scss";
 
 /**
  * Markdownテキストを解析してReactコンポーネントを生成する
  */
-export const MarkdownRenderer = async ({ children }) => {
+export const MarkdownRenderer = async ({ children }: MarkdownRendererProps) => {
   // remarkインスタンスを生成しプラグインを適用
   const parseMarkdown = remark().use(remarkBreaks).use(remarkGfm);
 
@@ -15,7 +39,7 @@ export const MarkdownRenderer = async ({ children }) => {
   const parsed = parseMarkdown.parse(children);
 
   // MDASTから最終的な構造を取得
-  const mdastRoot = await parseMarkdown.run(parsed);
+  const mdastRoot = (await parseMarkdown.run(parsed)) as Root;
 
   // MDASTをReactコンポーネントに変換
   return <NodesRenderer nodes={mdastRoot.children} />;
@@ -24,60 +48,60 @@ export const MarkdownRenderer = async ({ children }) => {
 /**
  * MDASTノード配列を対応したReactコンポーネントに変換する
  */
-const NodesRenderer = ({ nodes }) => {
+const NodesRenderer = ({ nodes }: NodesRendererProps) => {
   return nodes.map((node, index) => {
     switch (node.type) {
       case "heading": {
         // 見出しノード(h1など)
-        return <HeadingNode key={index} node={node} />;
+        return <HeadingNode key={index} node={node as Heading} />;
       }
       case "text":
       case "linkReference":
       case "definition": {
         // テキストノード
-        return node.value;
+        return (node as Text).value;
       }
       case "paragraph": {
         // 段落ノード
         return (
           <p className={styles.paragraph}>
-            <NodesRenderer nodes={node.children} />
+            <NodesRenderer nodes={(node as Paragraph).children} />
           </p>
         );
       }
       case "inlineCode": {
         // インラインコードノード
-        return <code>{node.value}</code>;
+        return <code>{(node as InlineCode).value}</code>;
       }
       case "blockquote": {
         // ブロック引用ノード
         return (
           <blockquote className={styles.blockquote}>
-            <NodesRenderer nodes={node.children} />
+            <NodesRenderer nodes={(node as Blockquote).children} />
           </blockquote>
         );
       }
       case "link": {
         // リンクノード
         return (
-          <a href={node.url} target="_blank" rel="noreferrer">
-            <NodesRenderer nodes={node.children} />
+          <a href={(node as Link).url} target="_blank" rel="noreferrer">
+            <NodesRenderer nodes={(node as Link).children} />
           </a>
         );
       }
       case "list": {
         // リストノード
-        return <ListNode key={index} node={node} />;
+        return <ListNode key={index} node={node as List} />;
       }
       case "listItem": {
         // リストアイテムノード
-        return <ListItemNode key={index} node={node} />;
+        return <ListItemNode key={index} node={node as ListItem} />;
       }
       case "strong": {
         // 太字ノード
         return (
           <strong>
-            <NodesRenderer nodes={node.children} />
+            <NodesRenderer nodes={(node as Strong).children} />
           </strong>
         );
       }
@@ -85,7 +109,7 @@ const NodesRenderer = ({ nodes }) => {
         // 斜体ノード
         return (
           <em>
-            <NodesRenderer nodes={node.children} />
+            <NodesRenderer nodes={(node as Emphasis).children} />
           </em>
         );
       }
@@ -95,14 +119,20 @@ const NodesRenderer = ({ nodes }) => {
       }
       case "image": {
         // 画像ノード
-        return <CustomImage src={node.url} alt={node.alt} title={node.title} />;
+        return (
+          <CustomImage
+            src={(node as Image).url}
+            alt={(node as Image).alt}
+            title={(node as Image).title}
+          />
+        );
       }
       case "code": {
         // コードブロックノード
         return (
           <div
             className={styles.codeblock}
-            dangerouslySetInnerHTML={{ __html: node.value }}
+            dangerouslySetInnerHTML={{ __html: (node as Code).value }}
           />
         );
       }
@@ -110,13 +140,13 @@ const NodesRenderer = ({ nodes }) => {
         // 削除ノード
         return (
           <del>
-            <NodesRenderer nodes={node.children} />
+            <NodesRenderer nodes={(node as Delete).children} />
           </del>
         );
       }
       case "table": {
         // 表ノード
-        return <TableNode key={index} node={node} />;
+        return <TableNode key={index} node={node as Table} />;
       }
       case "thematicBreak": {
         // 水平線ノード
@@ -128,7 +158,7 @@ const NodesRenderer = ({ nodes }) => {
           <div
             className={styles.box}
             key={index}
-            dangerouslySetInnerHTML={{ __html: node.value }}
+            dangerouslySetInnerHTML={{ __html: (node as HTML).value }}
           />
         );
       }
@@ -162,13 +192,13 @@ const HeadingNode = ({ node }) => {
   )[node.depth];
 
   // 子要素のテキストを再帰的に取得
-  const childrenText = (function getChildrenText(children): string {
+  const childrenText = (function getChildrenText(children: Content[]): string {
     return children.reduce((acc, child) => {
       if ("value" in child) {
-        return acc + child.value;
+        return acc + (child as Text).value;
       }
       if ("children" in child) {
-        return acc + getChildrenText(child.children);
+        return acc + getChildrenText((child as any).children);
       }
       return acc;
     }, "");
@@ -185,7 +215,7 @@ const HeadingNode = ({ node }) => {
 /**
  * リストノードのレンダリング定義
  */
-const ListNode = ({ node }) => {
+const ListNode = ({ node }: ListNodeProps) => {
   return node.ordered ? (
     <ol className={styles.list}>
       <NodesRenderer nodes={node.children} />
@@ -200,11 +230,11 @@ const ListNode = ({ node }) => {
 /**
  * リストアイテムノードのレンダリング定義
  */
-const ListItemNode = ({ node }) => {
+const ListItemNode = ({ node }: ListItemNodeProps) => {
   if (node.children.length === 1 && node.children[0].type === "paragraph") {
     return (
       <li>
-        <NodesRenderer nodes={node.children[0].children} />
+        <NodesRenderer nodes={(node.children[0] as Paragraph).children} />
       </li>
     );
   }
@@ -219,15 +249,15 @@ const ListItemNode = ({ node }) => {
 /**
  * 表ノードのレンダリング定義
  */
-const TableNode = ({ node }) => {
-  const [headRow, ...bodyRows] = node.children;
+const TableNode = ({ node }: TableNodeProps) => {
+  const [headRow, ...bodyRows] = node.children as TableRow[];
   return (
     <table className={styles.table}>
       <thead>
         <tr>
           {headRow.children.map((cell, index) => (
             <th key={index} className={styles[node.align?.[index] ?? "left"]}>
-              <NodesRenderer nodes={cell.children} />
+              <NodesRenderer nodes={(cell as TableCell).children} />
             </th>
           ))}
         </tr>
@@ -237,7 +267,7 @@ const TableNode = ({ node }) => {
           <tr key={index}>
             {row.children.map((cell, index) => (
               <td key={index} className={styles[node.align?.[index] ?? "left"]}>
-                <NodesRenderer nodes={cell.children} />
+                <NodesRenderer nodes={(cell as TableCell).children} />
               </td>
             ))}
           </tr>
