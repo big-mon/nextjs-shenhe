@@ -2,6 +2,8 @@
 
 import { CldImage } from "next-cloudinary";
 import { getCloudinaryImageUrl } from "@lib/cloudinary";
+import { isExternalLink } from "@lib/url";
+import { CustomLink } from "./custom-link";
 
 type Props = {
   src: string;
@@ -10,7 +12,8 @@ type Props = {
 };
 
 export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
-  const imageUrl = getCloudinaryImageUrl(src);
+  const isExternal = isExternalLink(src);
+  const imageOgpUrl = getCloudinaryImageUrl(src, "ogp");
 
   return (
     <span className="relative block">
@@ -20,7 +23,7 @@ export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
         width={860}
         height={860}
         placeholder="blur"
-        blurDataURL={imageUrl}
+        blurDataURL={imageOgpUrl}
         namedTransformations={["post"]}
         sizes="(max-width: 672px) 100vw, 672px"
       />

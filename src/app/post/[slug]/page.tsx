@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@lib/api";
 import { PostBody } from "./post-body";
 import { PostHeader } from "./post-header";
-import { getCloudinaryImageOgpUrl } from "@lib/cloudinary";
+import { getCloudinaryImageUrl } from "@lib/cloudinary";
 
 export default async function Post(props: Params) {
   const params = await props.params;
@@ -48,8 +48,8 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
       title: post.title,
       images: [
         post.ogImage
-          ? getCloudinaryImageOgpUrl("/illust/" + post.ogImage)
-          : getCloudinaryImageOgpUrl("/illust/" + post.coverImage),
+          ? getCloudinaryImageUrl("/illust/" + post.ogImage, "ogp")
+          : getCloudinaryImageUrl("/illust/" + post.coverImage, "ogp"),
       ],
     },
   };

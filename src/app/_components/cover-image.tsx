@@ -10,7 +10,7 @@ type Props = {
 };
 
 const CoverImage = ({ title, src, size }: Props) => {
-  const imageUrl = getCloudinaryImageUrl(src);
+  const imageUrl = getCloudinaryImageUrl(src, "hero");
 
   let img = <></>;
   if (size === "large") {

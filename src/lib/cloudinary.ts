@@ -1,12 +1,11 @@
 import { getCldImageUrl } from "next-cloudinary";
 
-export function getCloudinaryImageUrl(publicId: string) {
-  return getCldImageUrl({ src: publicId.slice(1) });
-}
-
-export function getCloudinaryImageOgpUrl(publicId: string) {
+export function getCloudinaryImageUrl(
+  publicId: string,
+  namedTransformations: "hero" | "post" | "ogp" | "blur"
+) {
   return getCldImageUrl({
     src: publicId.slice(1),
-    namedTransformations: "ogp",
+    namedTransformations: namedTransformations,
   });
 }
