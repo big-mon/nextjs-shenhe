@@ -1,7 +1,7 @@
 "use client";
 
 import { CldImage } from "next-cloudinary";
-import { getCloudinaryImageUrl } from "@lib/cloudinary";
+import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
 
 type Props = {
   title: string;
@@ -9,8 +9,8 @@ type Props = {
   size: "large" | "small" | "ogp";
 };
 
-const CoverImage = ({ title, src, size }: Props) => {
-  const imageOgpUrl = getCloudinaryImageUrl(src, "ogp");
+const CoverImage = async ({ title, src, size }: Props) => {
+  const imageBlurUrl = await getCloudinaryBlurredSrc(src);
 
   let img = <></>;
   if (size === "large") {
@@ -20,10 +20,9 @@ const CoverImage = ({ title, src, size }: Props) => {
         width={1600}
         height={900}
         alt={`Cover Image for ${title}`}
-        className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
+        className="object-cover"
         placeholder="blur"
-        blurDataURL={imageOgpUrl}
-        namedTransformations={["hero"]}
+        blurDataURL={imageBlurUrl}
         priority
       />
     );
@@ -36,7 +35,7 @@ const CoverImage = ({ title, src, size }: Props) => {
         alt={`Cover Image for ${title}`}
         className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
         placeholder="blur"
-        blurDataURL={imageOgpUrl}
+        blurDataURL={imageBlurUrl}
         namedTransformations={["eyecatch"]}
       />
     );
