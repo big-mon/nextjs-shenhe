@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Link as MdastLink, RootContent } from "mdast";
 import { NodesRenderer } from "./markdownRenderer";
+import { isExternalLink } from "@lib/url";
 import styles from "@styles/markdown.module.scss";
 
 interface CustomLinkProps {
@@ -19,8 +20,4 @@ export const CustomLink = ({ node }: CustomLinkProps) => {
       <NodesRenderer nodes={node.children as RootContent[]} />
     </Link>
   );
-};
-
-const isExternalLink = (url: string) => {
-  return url.startsWith("http");
 };
