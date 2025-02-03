@@ -118,13 +118,17 @@ Shenhe は Next.js 向けに作成されたブログテンプレートです。N
 # リンクした文字列
 
 ```md
-[リンクテキスト](https://example.com/)
+[リンクテキスト(内部)](/)
+[リンクテキスト(外部)](https://example.com/)
+
 [この書き方はできません][1]
 
 [1]: https://example.com/
 ```
 
-[リンクテキスト](https://example.com/)
+[リンクテキスト(内部)](/)
+[リンクテキスト(外部)](https://example.com/)
+
 [この書き方はできません][1]
 
 [1]: https://example.com/

@@ -13,8 +13,14 @@ export const CustomLink = ({ node }: CustomLinkProps) => {
       href={node.url}
       title={node.title ?? undefined}
       className={styles.link}
+      target={isExternalLink(node.url) ? "_blank" : undefined}
+      rel={isExternalLink(node.url) ? "noopener noreferrer" : undefined}
     >
       <NodesRenderer nodes={node.children as RootContent[]} />
     </Link>
   );
+};
+
+const isExternalLink = (url: string) => {
+  return url.startsWith("http");
 };
