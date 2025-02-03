@@ -2,9 +2,9 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import { CustomImage } from "./custom-image";
+import { CustomLink } from "./custom-link";
 import {
   Root,
-  Content,
   Heading,
   Paragraph,
   List,
@@ -13,19 +13,25 @@ import {
   TableRow,
   TableCell,
   Code,
-  HTML,
-  Link,
   Blockquote,
   Text,
   Strong,
   Emphasis,
-  Break,
   Delete,
-  ThematicBreak,
   InlineCode,
   Image,
+  Link,
+  Parent,
+  Html,
 } from "mdast";
-
+import {
+  MarkdownRendererProps,
+  NodesRendererProps,
+  HeadingNodeProps,
+  ListNodeProps,
+  ListItemNodeProps,
+  TableNodeProps,
+} from "@interfaces/mdast";
 import styles from "@styles/markdown.module.scss";
 
 /**
@@ -48,7 +54,7 @@ export const MarkdownRenderer = async ({ children }: MarkdownRendererProps) => {
 /**
  * MDASTノード配列を対応したReactコンポーネントに変換する
  */
-const NodesRenderer = ({ nodes }: NodesRendererProps) => {
+export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
   return nodes.map((node, index) => {
     switch (node.type) {
       case "heading": {
@@ -83,11 +89,7 @@ const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
       case "link": {
         // リンクノード
-        return (
-          <a href={(node as Link).url} target="_blank" rel="noreferrer">
-            <NodesRenderer nodes={(node as Link).children} />
-          </a>
-        );
+        return <CustomLink key={index} node={node as Link} />;
       }
       case "list": {
         // リストノード
@@ -122,8 +124,8 @@ const NodesRenderer = ({ nodes }: NodesRendererProps) => {
         return (
           <CustomImage
             src={(node as Image).url}
-            alt={(node as Image).alt}
-            title={(node as Image).title}
+            alt={(node as Image).alt ?? undefined}
+            title={(node as Image).title ?? undefined}
           />
         );
       }
@@ -158,7 +160,7 @@ const NodesRenderer = ({ nodes }: NodesRendererProps) => {
           <div
             className={styles.box}
             key={index}
-            dangerouslySetInnerHTML={{ __html: (node as HTML).value }}
+            dangerouslySetInnerHTML={{ __html: (node as Html).value }}
           />
         );
       }
@@ -178,7 +180,7 @@ const NodesRenderer = ({ nodes }: NodesRendererProps) => {
 /**
  * 見出しノードのレンダリング定義
  */
-const HeadingNode = ({ node }) => {
+const HeadingNode = ({ node }: HeadingNodeProps) => {
   // 深さに応じて適切なコンポーネントを選択
   const Component = (
     {
@@ -192,17 +194,19 @@ const HeadingNode = ({ node }) => {
   )[node.depth];
 
   // 子要素のテキストを再帰的に取得
-  const childrenText = (function getChildrenText(children: Content[]): string {
+  const childrenText = (function getChildrenText(
+    children: (Text | Parent)[]
+  ): string {
     return children.reduce((acc, child) => {
       if ("value" in child) {
         return acc + (child as Text).value;
       }
       if ("children" in child) {
-        return acc + getChildrenText((child as any).children);
+        return acc + getChildrenText(child.children as (Text | Parent)[]);
       }
       return acc;
     }, "");
-  })(node.children);
+  })(node.children as (Text | Parent)[]);
 
   // ID属性に取得したテキストをエンコードして設定
   return (
