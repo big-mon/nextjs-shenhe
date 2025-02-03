@@ -6,7 +6,7 @@ date: 2025-01-06T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: m4lwcsjvf2fsjilp2dso
+coverImage: /illust/m4lwcsjvf2fsjilp2dso
 category: 昔話
 tags: ["中国", "旅行"]
 ---

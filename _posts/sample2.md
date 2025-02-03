@@ -6,7 +6,7 @@ date: 2025-01-02T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: iygtjxtsrs1hgqbihrer
+coverImage: /illust/iygtjxtsrs1hgqbihrer
 category: 旅行
 tags: []
 ---

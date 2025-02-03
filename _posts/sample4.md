@@ -6,7 +6,7 @@ date: 2025-01-04T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: gfi3ztohtahsbwksroqx
+coverImage: /illust/gfi3ztohtahsbwksroqx
 category: エッセイ
 tags: ["香り", "嗅覚", "感情"]
 ---

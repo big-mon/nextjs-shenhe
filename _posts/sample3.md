@@ -6,7 +6,7 @@ date: 2025-01-03T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: senwyvqbxvxpvmhc5kzz
+coverImage: /illust/fdhpadnbf4e330nt4sew
 category: sample
 tags: ["tag1", "tag2"]
 ---

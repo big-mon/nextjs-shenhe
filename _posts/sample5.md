@@ -6,7 +6,7 @@ date: 2025-01-05T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: oajmdfvac2ydbyrudcwo
+coverImage: /illust/oajmdfvac2ydbyrudcwo
 category: 雑学
 tags: ["驚き", 日常生活", "知識"]
 ---

@@ -6,7 +6,7 @@ date: 2025-01-10T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: dfxk6efbqnmtgnhim9nd
+coverImage: /illust/dfxk6efbqnmtgnhim9nd
 category: 昔話
 tags: ["ヤギ"]
 ---

@@ -16,12 +16,10 @@ export function PostPreview({
   category,
   isTopPage,
 }: Props) {
-  const publicId = "/illust/" + coverImage;
-
   return (
     <article className="group hover:bg-gray-200 rounded-xl p-5 transition-all">
       <Link href={`/post/${slug}`} className="block mb-4">
-        <CoverImage title={title} src={publicId} size={"small"} />
+        <CoverImage title={title} src={coverImage} size={"small"} />
       </Link>
 
       {isTopPage ? (

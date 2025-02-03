@@ -6,7 +6,7 @@ date: 2025-01-01T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: r9o8w7svb6vjvk9gfjjh
+coverImage: /illust/r9o8w7svb6vjvk9gfjjh
 category: 旅行
 tags: ["日記"]
 ---

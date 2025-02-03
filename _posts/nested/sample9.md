@@ -6,7 +6,7 @@ date: 2025-01-09T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: upgl6186rytxb1frju6x
+coverImage: /illust/upgl6186rytxb1frju6x
 category: エッセイ
 tags: ["ネコ", "ネズミ"]
 ---

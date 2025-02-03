@@ -6,7 +6,7 @@ date: 2025-01-07T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: sa2vqdeyj26zpdrvbmgb
+coverImage: /illust/sa2vqdeyj26zpdrvbmgb
 category: エッセイ
 tags: ["科学"]
 ---

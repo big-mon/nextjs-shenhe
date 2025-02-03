@@ -6,7 +6,7 @@ date: 2025-01-08T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: l7v6bktbmevxtrinym4i
+coverImage: /illust/l7v6bktbmevxtrinym4i
 category: 昔話
 tags: ["日記"]
 ---

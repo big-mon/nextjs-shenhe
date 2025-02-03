@@ -6,7 +6,7 @@ date: 2025-01-11T07:00:00
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: waobhkmtac9vehog5cd8
+coverImage: /illust/waobhkmtac9vehog5cd8
 category: 昔話
 tags: ["ネズミ"]
 ---

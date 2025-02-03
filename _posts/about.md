@@ -6,7 +6,7 @@ date: "2025-01-01T00:00:00"
 author:
   name: Mon
   picture: /assets/blog/authors/tim.jpeg
-coverImage: fr2hbemgc6vjlxuk0syu
+coverImage: /illust/fr2hbemgc6vjlxuk0syu
 category: Other
 tags: []
 ---
