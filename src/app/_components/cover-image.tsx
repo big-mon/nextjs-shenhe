@@ -10,7 +10,7 @@ type Props = {
 };
 
 const CoverImage = ({ title, src, size }: Props) => {
-  const imageUrl = getCloudinaryImageUrl(src, "hero");
+  const imageOgpUrl = getCloudinaryImageUrl(src, "ogp");
 
   let img = <></>;
   if (size === "large") {
@@ -22,7 +22,7 @@ const CoverImage = ({ title, src, size }: Props) => {
         alt={`Cover Image for ${title}`}
         className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
         placeholder="blur"
-        blurDataURL={imageUrl}
+        blurDataURL={imageOgpUrl}
         namedTransformations={["hero"]}
         priority
       />
@@ -36,7 +36,7 @@ const CoverImage = ({ title, src, size }: Props) => {
         alt={`Cover Image for ${title}`}
         className="w-full object-cover rounded-xl aspect-w-2 aspect-h-1"
         placeholder="blur"
-        blurDataURL={imageUrl}
+        blurDataURL={imageOgpUrl}
         namedTransformations={["eyecatch"]}
       />
     );
