@@ -142,3 +142,11 @@ hr.line {
     opacity: 0.4;
   }
 }
+
+a.link {
+  color: #259d63;
+  text-decoration: underline;
+  &:hover {
+    opacity: 0.5;
+  }
+}
