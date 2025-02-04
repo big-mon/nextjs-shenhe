@@ -7,3 +7,5 @@ export const OWNER = "MON"; // owner name
 export const TWITTER = "big_mon"; // twitter account: without @ mark
 export const GITHUB = "big-mon"; // github account
 export const AMAZON_AFFILIATE = "d6l0g03-22"; // Amazon affiliate id
+
+export const PER_PAGE: number = 9;
