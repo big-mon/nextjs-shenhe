@@ -5,6 +5,12 @@ import { PostBody } from "./post-body";
 import { PostHeader } from "./post-header";
 import { getCloudinaryImageUrl } from "@lib/cloudinary";
 
+type Params = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
 export default async function Post(props: Params) {
   const params = await props.params;
   const post = getPostBySlug(params.slug);
@@ -27,12 +33,6 @@ export default async function Post(props: Params) {
     </main>
   );
 }
-
-type Params = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
 
 export async function generateMetadata(props: Params): Promise<Metadata> {
   const params = await props.params;
