@@ -7,11 +7,16 @@ type Props = {
   src: string;
   alt?: string;
   title?: string;
+  blurredSrc: string;
 };
 
-export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
+export const CustomImage = ({
+  src,
+  alt = "",
+  title = "",
+  blurredSrc,
+}: Props) => {
   const imageUrl = getCloudinaryImageUrl(src, "post");
-  const imageOgpUrl = getCloudinaryImageUrl(src, "ogp");
 
   return (
     <span className="relative block">
@@ -22,7 +27,7 @@ export const CustomImage = ({ src, alt = "", title = "" }: Props) => {
           width={860}
           height={860}
           placeholder="blur"
-          blurDataURL={imageOgpUrl}
+          blurDataURL={blurredSrc}
           namedTransformations={["post"]}
           sizes="(max-width: 672px) 100vw, 672px"
         />

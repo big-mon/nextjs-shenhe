@@ -32,6 +32,7 @@ import {
   ListItemNodeProps,
   TableNodeProps,
 } from "@interfaces/mdast";
+import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
 import styles from "@styles/markdown.module.scss";
 
 /**
@@ -55,7 +56,7 @@ export const MarkdownRenderer = async ({ children }: MarkdownRendererProps) => {
  * MDASTノード配列を対応したReactコンポーネントに変換する
  */
 export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
-  return nodes.map((node, index) => {
+  return nodes.map(async (node, index) => {
     switch (node.type) {
       case "heading": {
         // 見出しノード(h1など)
@@ -121,11 +122,13 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
       case "image": {
         // 画像ノード
+        const imageBlurUrl = await getCloudinaryBlurredSrc(node.url);
         return (
           <CustomImage
             src={(node as Image).url}
             alt={(node as Image).alt ?? undefined}
             title={(node as Image).title ?? undefined}
+            blurredSrc={imageBlurUrl}
           />
         );
       }

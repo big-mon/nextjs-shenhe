@@ -1,5 +1,6 @@
 import Link from "next/link";
-import CoverImage from "./cover-image";
+import CoverImage from "@components/image/cover-image";
+import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
 
 type Props = {
   title: string;
@@ -9,17 +10,24 @@ type Props = {
   isTopPage: boolean;
 };
 
-export function PostPreview({
+export async function PostPreview({
   title,
   coverImage,
   slug,
   category,
   isTopPage,
 }: Props) {
+  const imageBlurUrl = await getCloudinaryBlurredSrc(coverImage);
+
   return (
     <article className="group hover:bg-gray-200 rounded-xl p-5 transition-all">
       <Link href={`/post/${slug}`} className="block mb-4">
-        <CoverImage title={title} src={coverImage} size={"small"} />
+        <CoverImage
+          title={title}
+          src={coverImage}
+          size={"small"}
+          blurredSrc={imageBlurUrl}
+        />
       </Link>
 
       {isTopPage ? (
