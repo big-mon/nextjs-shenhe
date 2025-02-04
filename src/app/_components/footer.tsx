@@ -51,14 +51,11 @@ export function Footer() {
           <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <SocialLink
               href={`https://twitter.com/${TWITTER}`}
-              label="Twitter page"
+              label="X(Twitter)"
             >
               <TwitterIcon />
             </SocialLink>
-            <SocialLink
-              href={`https://github.com/${GITHUB}`}
-              label="GitHub account"
-            >
+            <SocialLink href={`https://github.com/${GITHUB}`} label="GitHub">
               <GitHubIcon />
             </SocialLink>
           </div>
