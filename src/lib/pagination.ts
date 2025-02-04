@@ -8,5 +8,5 @@ import { PER_PAGE } from "@lib/constants";
  * @returns 総ページ数（切り上げ）。
  */
 export function howTotalPages(posts: Post[]) {
-  return Math.ceil((posts.length + 1) / PER_PAGE);
+  return Math.ceil((posts.length + 1) / PER_PAGE) - 1;
 }
