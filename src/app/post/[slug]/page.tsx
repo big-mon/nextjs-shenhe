@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@lib/api";
+import { getAllPosts, getPostBySlug } from "@lib/blogService";
 import { PostBody } from "./post-body";
 import { PostHeader } from "./post-header";
 import { getCloudinaryImageUrl } from "@lib/cloudinary";
