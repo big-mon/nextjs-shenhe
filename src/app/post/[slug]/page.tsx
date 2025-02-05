@@ -24,6 +24,8 @@ export default async function Post(props: Params) {
       <article className="mb-32">
         <PostHeader
           title={post.title}
+          category={post.category}
+          tags={post.tags}
           coverImage={post.coverImage}
           date={post.date}
           author={post.author}
