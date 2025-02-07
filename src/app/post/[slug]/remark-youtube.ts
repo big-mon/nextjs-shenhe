@@ -1,11 +1,6 @@
 import { visit } from "unist-util-visit";
 import { Plugin } from "unified";
-import { Node } from "unist";
-
-interface YouTubeNode extends Node {
-  type: "youtube";
-  value: string;
-}
+import { YouTubeNode } from "mdast";
 
 const remarkYouTube: Plugin = () => {
   return (tree) => {

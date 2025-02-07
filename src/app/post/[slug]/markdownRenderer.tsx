@@ -25,6 +25,8 @@ import {
   Link,
   Parent,
   Html,
+  TwitterNode,
+  YouTubeNode,
 } from "mdast";
 import {
   MarkdownRendererProps,
@@ -175,15 +177,16 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
       case "twitter": {
         // Twitterノード
+        const twitterNode = node as TwitterNode;
         return (
           <div className="twitter-embed">
             <blockquote className="twitter-tweet">
               <a
-                href={`https://twitter.com/user/status/${node.value}`}
+                href={`https://twitter.com/user/status/${twitterNode.value}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Twitter: {node.value}
+                Twitter: {twitterNode.value}
               </a>
             </blockquote>
             <script async src="https://platform.twitter.com/widgets.js" />
@@ -192,13 +195,13 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
       case "youtube": {
         // YouTubeノード
+        const youtubeNode = node as YouTubeNode;
         return (
           <div className="youtube-embed">
             <iframe
               width="560"
               height="315"
-              src={`https://www.youtube.com/embed/${node.value}`}
-              frameBorder="0"
+              src={`https://www.youtube.com/embed/${youtubeNode.value}`}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>

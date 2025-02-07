@@ -1,11 +1,6 @@
 import { visit } from "unist-util-visit";
 import { Plugin } from "unified";
-import { Node } from "unist";
-
-interface TwitterNode extends Node {
-  type: "twitter";
-  value: string;
-}
+import { TwitterNode } from "mdast";
 
 const remarkTwitter: Plugin = () => {
   return (tree) => {
