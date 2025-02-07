@@ -1,6 +1,8 @@
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
+import remarkTwitter from "./remark-twitter";
+import remarkYouTube from "./remark-youtube";
 import { CustomImage } from "./custom-image";
 import { CustomLink } from "./custom-link";
 import {
@@ -40,7 +42,11 @@ import styles from "@styles/markdown.module.scss";
  */
 export const MarkdownRenderer = async ({ children }: MarkdownRendererProps) => {
   // remarkインスタンスを生成しプラグインを適用
-  const parseMarkdown = remark().use(remarkBreaks).use(remarkGfm);
+  const parseMarkdown = remark()
+    .use(remarkBreaks)
+    .use(remarkGfm)
+    .use(remarkTwitter)
+    .use(remarkYouTube);
 
   // Markdownテキストを解析し、Markdown Abstract Syntax Treeを生成
   const parsed = parseMarkdown.parse(children);
@@ -165,6 +171,38 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
             key={index}
             dangerouslySetInnerHTML={{ __html: (node as Html).value }}
           />
+        );
+      }
+      case "twitter": {
+        // Twitterノード
+        return (
+          <div className="twitter-embed">
+            <blockquote className="twitter-tweet">
+              <a
+                href={`https://twitter.com/user/status/${node.value}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Twitter: {node.value}
+              </a>
+            </blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" />
+          </div>
+        );
+      }
+      case "youtube": {
+        // YouTubeノード
+        return (
+          <div className="youtube-embed">
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${node.value}`}
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         );
       }
       default: {
