@@ -1,12 +1,11 @@
 import { visit } from "unist-util-visit";
 import { Plugin } from "unified";
-import { YouTubeNode } from "mdast";
 
 const remarkYouTube: Plugin = () => {
   return (tree) => {
     visit(tree, "code", (node: any, index, parent) => {
       if (node.lang === "youtube") {
-        const youtubeNode: YouTubeNode = {
+        const youtubeNode = {
           type: "youtube",
           value: node.value,
         };
@@ -17,3 +16,14 @@ const remarkYouTube: Plugin = () => {
 };
 
 export default remarkYouTube;
+
+declare module "mdast" {
+  export interface YouTubeBlock extends Resource {
+    type: "youtube";
+    value: string;
+  }
+
+  interface RootContentMap {
+    youtube: YouTubeBlock;
+  }
+}
