@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "@components/logo";
+import Menu from "@components/menu";
 
 const GlobalHeader = () => {
   return (
@@ -8,6 +9,7 @@ const GlobalHeader = () => {
         <Link href="/">
           <Logo />
         </Link>
+        <Menu />
       </div>
     </header>
   );
