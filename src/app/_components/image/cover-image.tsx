@@ -13,7 +13,7 @@ const imageConfig = {
   large: {
     width: 1600,
     height: 900,
-    class: "object-cover",
+    class: "object-cover rounded-xl",
     priority: true,
   },
   small: {

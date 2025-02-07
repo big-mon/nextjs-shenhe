@@ -31,11 +31,11 @@ export async function PostPreview({
       </Link>
 
       {isTopPage ? (
-        <h3 className="mb-4 text-xs">
+        <h3 className="mb-2 text-xs">
           <Link href={`/category/${category.toLowerCase()}`}>{category}</Link>
         </h3>
       ) : (
-        <div className="mb-4 text-xs">
+        <div className="mb-2 text-xs">
           <Link href={`/category/${category.toLowerCase()}`}>{category}</Link>
         </div>
       )}
