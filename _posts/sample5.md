@@ -8,7 +8,7 @@ author:
   picture: /assets/blog/authors/tim.jpeg
 coverImage: /illust/oajmdfvac2ydbyrudcwo
 category: 雑学
-tags: ["驚き", 日常生活", "知識"]
+tags: ["驚き", "日常生活", "知識"]
 ---
 
 私たちの日常生活は、何気なく過ぎていくことが多いですが、実はその中には驚くべき事実が隠されています。街角にも知られざる雑学が広がっているのです。そこで今回は、私たちが普段見落としてしまいがちな驚きの事実を探求してみたいと思います。
