@@ -1,27 +1,33 @@
-import { getPosts } from "services/accessToPage";
-import PostCard from "components/card";
-import Pagination from "components/pagination";
+import { MoreStories } from "@components/more-stories";
+import Pagination from "@components/pagination";
+import { getAllPosts } from "@lib/blogService";
+import { howTotalPages } from "@lib/pagination";
+import { PER_PAGE } from "@lib/constants";
 
-export default function Page({ params }: { params: { page: number } }) {
-  const posts = getPosts(params.page);
+type Params = {
+  params: Promise<{
+    page: number;
+  }>;
+};
+
+export default async function Page(props: Params) {
+  const page = (await props.params).page;
+  const allPosts = getAllPosts();
+  const pagePosts = allPosts.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const totalPage = howTotalPages(allPosts);
+
   return (
-    <div className="container mx-auto max-w-5xl mb-14">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.posts.map((post) => {
-          return (
-            <>
-              <PostCard key={"page_" + post.slug} data={post} size="small" />
-            </>
-          );
-        })}
-      </div>
+    <main className="container mx-auto max-w-5xl">
+      <MoreStories posts={pagePosts} />
 
-      <Pagination
-        type="all"
-        currentPage={params.page}
-        totalPage={posts.totalPage}
-        prefix={""}
-      />
-    </div>
+      <div className="mb-16">
+        <Pagination
+          type={"all"}
+          currentPage={page}
+          totalPage={totalPage}
+          prefix={""}
+        />
+      </div>
+    </main>
   );
 }

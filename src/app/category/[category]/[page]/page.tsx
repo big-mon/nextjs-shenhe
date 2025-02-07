@@ -1,40 +1,37 @@
-import { PostMeta } from "models/Post";
-import { getPosts } from "services/accessToCategory";
-import PostCard from "components/card";
-import Pagination from "components/pagination";
+import { MoreStories } from "@components/more-stories";
+import Pagination from "@components/pagination";
+import { getAllPosts } from "@lib/blogService";
+import { howTotalPages } from "@lib/pagination";
+import { PER_PAGE } from "@lib/constants";
 
-export default async function Page({
-  params,
-}: {
-  params: { category: PostMeta["category"]; page: number };
-}) {
-  const category = decodeURIComponent(params.category);
-  const PostData = getPosts(category, params.page);
+type Params = {
+  params: Promise<{
+    category: string;
+    page: number;
+  }>;
+};
+
+export default async function Page(props: Params) {
+  const category = decodeURIComponent((await props.params).category);
+  const page = (await props.params).page;
+  const allPosts = getAllPosts().filter(
+    (post) => post.category.toLowerCase() === category.toLowerCase()
+  );
+  const pagePosts = allPosts.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const totalPage = howTotalPages(allPosts);
+
   return (
-    <div className="container mx-auto max-w-5xl mb-14">
-      <h1 className="mt-5 ml-5 uppercase text-2xl font-bold">{category}</h1>
+    <main className="container mx-auto max-w-5xl">
+      <MoreStories posts={pagePosts} title={category} />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-3">
-        {PostData.posts.map((post) => {
-          return (
-            <>
-              <PostCard
-                key={"category_" + post.slug}
-                data={post}
-                size="small"
-                isTitleH1={false}
-              />
-            </>
-          );
-        })}
+      <div className="mb-16">
+        <Pagination
+          type={"category"}
+          currentPage={page}
+          totalPage={totalPage}
+          prefix={category}
+        />
       </div>
-
-      <Pagination
-        type="category"
-        currentPage={params.page}
-        totalPage={PostData.totalPage}
-        prefix={category}
-      />
-    </div>
+    </main>
   );
 }

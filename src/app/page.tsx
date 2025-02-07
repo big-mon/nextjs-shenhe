@@ -1,29 +1,27 @@
-import { getPosts } from "services/accessToTop";
-import PostCard from "components/card";
-import Pagination from "components/pagination";
+import { MoreStories } from "@components/more-stories";
+import Pagination from "@components/pagination";
+import { getAllPosts } from "@lib/blogService";
+import { howTotalPages } from "@lib/pagination";
+import { PER_PAGE } from "@lib/constants";
 
-export default function Page() {
-  const posts = getPosts();
+export default async function Page() {
+  const page = 1;
+  const allPosts = getAllPosts();
+  const pagePosts = allPosts.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+  const totalPage = howTotalPages(allPosts);
+
   return (
-    <div className="container mx-auto max-w-5xl mb-14">
-      <div className="grid lg:grid-cols-2 gap-6">
-        {posts.posts.slice(0, 2).map((post) => {
-          return <PostCard key={post.slug} data={post} size="large" />;
-        })}
-      </div>
+    <main className="container mx-auto max-w-5xl">
+      <MoreStories posts={pagePosts} />
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
-        {posts.posts.slice(2).map((post) => {
-          return <PostCard key={post.slug} data={post} size="small" />;
-        })}
+      <div className="mb-16">
+        <Pagination
+          type={"all"}
+          currentPage={page}
+          totalPage={totalPage}
+          prefix={""}
+        />
       </div>
-
-      <Pagination
-        type="all"
-        currentPage={1}
-        totalPage={posts.totalPage}
-        prefix={""}
-      />
-    </div>
+    </main>
   );
 }

@@ -1,0 +1,152 @@
+h1.heading,
+h2.heading,
+h3.heading,
+h4.heading,
+h5.heading,
+h6.heading {
+  font-size: 1.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+}
+h3.heading {
+  font-size: 1.5rem;
+  margin-top: 3.5rem;
+}
+h4.heading {
+  font-size: 1.375rem;
+  margin-top: 3rem;
+}
+h5.heading {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-top: 2.5rem;
+}
+h6.heading {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 2rem;
+}
+
+p.paragraph {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+div.codeblock {
+  white-space: pre;
+  background-color: rgb(242 242 242);
+  margin-bottom: 1.5rem;
+  padding: 1rem 0.5rem;
+}
+div.box {
+  margin-bottom: 1.5rem;
+}
+
+table.table {
+  width: 100%;
+  min-width: max-content;
+  margin-bottom: 1.5rem;
+
+  th {
+    background-color: rgb(242 242 242);
+  }
+
+  th,
+  td {
+    border-bottom: 1px solid rgb(0 0 0);
+    padding: 1.5rem 1rem;
+
+    &.left {
+      text-align: left;
+    }
+    &.right {
+      text-align: right;
+    }
+    &.center {
+      text-align: center;
+    }
+  }
+}
+
+ol.list,
+ul.list {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+
+  li {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    ol,
+    ul,
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+ol.list {
+  list-style-type: decimal;
+}
+
+ul.list {
+  list-style-type: circle;
+}
+
+blockquote.blockquote {
+  background-color: rgb(242 242 242);
+  margin-bottom: 1.5rem;
+  padding: 1rem 0.5rem 1rem 4rem;
+
+  position: relative;
+  overflow: hidden;
+  min-height: 6rem;
+
+  & p:last-child {
+    margin-bottom: 0;
+  }
+
+  &:before {
+    content: "“";
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    font-size: 5em;
+    opacity: 0.2;
+  }
+
+  &:after {
+    content: "”";
+    position: absolute;
+    bottom: -7rem;
+    right: 0.5rem;
+    font-size: 10rem;
+    opacity: 0.2;
+  }
+}
+
+hr.line {
+  border: 0;
+  text-align: center;
+  height: auto;
+  margin-bottom: 1.5rem;
+
+  &:before {
+    content: "\2022 \2022 \2022";
+    font-size: 2rem;
+    opacity: 0.4;
+  }
+}
+
+a.link {
+  color: #259d63;
+  text-decoration: underline;
+  &:hover {
+    opacity: 0.5;
+  }
+}

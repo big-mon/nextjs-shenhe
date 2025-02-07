@@ -1,32 +1,16 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: "/1",
-        destination: "/",
-        permanent: true,
-      },
-      {
-        source: "/category/:category/1",
-        destination: "/category/:category",
-        permanent: true,
-      },
-      {
-        source: "/tag/:tag/1",
-        destination: "/tag/:tag",
-        permanent: true,
-      },
-    ];
-  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },
-  transpilePackages: ["@big-mon/react-component-amazon"],
 };
+
+module.exports = nextConfig;
