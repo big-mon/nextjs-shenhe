@@ -26,23 +26,33 @@ export async function PostHeader({
   const imageBlurUrl = await getCloudinaryBlurredSrc(coverImage);
 
   return (
-    <div className="px-5 py-5">
-      <div className="mx-auto">
-        <Link href={"/category/" + category.toLowerCase() + "/1"}>
+    <header className="px-5 py-5">
+      <div className="mx-auto max-w-2xl text-sm text-gray-500 md:flex mb-2">
+        <Link
+          href={"/category/" + category.toLowerCase() + "/1"}
+          className="hover:text-teal-500"
+        >
           {category}
         </Link>
       </div>
 
-      <div className="mx-auto">
+      <div className="mx-auto max-w-2xl text-xs text-gray-500">
         <DateFormatter dateString={date} />
       </div>
 
-      <PostTitle>{title}</PostTitle>
+      <div className="mx-auto max-w-2xl break-keep break-words">
+        <PostTitle>{title}</PostTitle>
+      </div>
 
       {tags.length > 0 && (
-        <div className="mx-auto">
+        <div className="mx-auto max-w-2xl mb-3 md:mb-4 text-xs text-gray-500">
           {tags.map((tag) => (
-            <Link href={"/tag/" + tag.toLowerCase() + "/1"}>#{tag}</Link>
+            <Link
+              href={"/tag/" + tag.toLowerCase() + "/1"}
+              className="ml-4 md:ml-0 md:mr-4 hover:text-teal-500"
+            >
+              #{tag}
+            </Link>
           ))}
         </div>
       )}
@@ -55,6 +65,6 @@ export async function PostHeader({
           blurredSrc={imageBlurUrl}
         />
       </div>
-    </div>
+    </header>
   );
 }
