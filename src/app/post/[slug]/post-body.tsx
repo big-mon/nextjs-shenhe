@@ -6,7 +6,7 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="mx-auto max-w-2xl px-5 md:px-0 leading-relaxed tracking-wider">
       <MarkdownRenderer>{content}</MarkdownRenderer>
     </div>
   );
