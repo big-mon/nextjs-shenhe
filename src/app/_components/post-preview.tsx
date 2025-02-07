@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CoverImage from "@components/image/cover-image";
 import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
+import ArrowIcon from "@components/icon/arrow";
 
 type Props = {
   title: string;
@@ -56,6 +57,7 @@ export async function PostPreview({
           className="inline-flex items-center gap-x-2"
         >
           Read more
+          <ArrowIcon />
         </Link>
       </p>
     </article>
