@@ -1,22 +1,17 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import { Post } from "@interfaces/post";
 import { PostPreview } from "./post-preview";
 
 type Props = {
   posts: Post[];
+  title?: string;
 };
 
-export function MoreStories({ posts }: Props) {
-  const pathname = usePathname();
-  const isTopPage = pathname === "/";
-
+export function MoreStories({ posts, title }: Props) {
   return (
     <section>
-      {!isTopPage && (
-        <h2 className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight">
-          More Stories
+      {title && (
+        <h2 className="mb-8 text-2xl tracking-tighter leading-tight">
+          {title.toUpperCase()}
         </h2>
       )}
 
@@ -28,7 +23,7 @@ export function MoreStories({ posts }: Props) {
             coverImage={post.coverImage}
             slug={post.slug}
             category={post.category}
-            isTopPage={isTopPage}
+            isTopPage={!title}
           />
         ))}
       </div>

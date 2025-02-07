@@ -19,7 +19,7 @@ export default async function Page(props: Params) {
 
   return (
     <main className="container mx-auto max-w-5xl">
-      <MoreStories posts={pagePosts} />
+      <MoreStories posts={pagePosts} title={tag} />
 
       <div className="mb-16">
         <Pagination
