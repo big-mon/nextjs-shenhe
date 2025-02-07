@@ -2,7 +2,7 @@ import Avatar from "@components/avatar";
 import CoverImage from "@components/image/cover-image";
 import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
 import DateFormatter from "@components/date-formatter";
-import { PostTitle } from "@components/post/post-title";
+import { PostTitle } from "./post-title";
 import { type Author } from "@interfaces/author";
 import Link from "next/link";
 
