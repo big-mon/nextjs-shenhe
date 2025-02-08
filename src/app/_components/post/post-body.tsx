@@ -1,4 +1,4 @@
-import { MarkdownRenderer } from "./markdownRenderer";
+import { MarkdownRenderer } from "@lib/markdown/markdownRenderer";
 
 type Props = {
   content: string;

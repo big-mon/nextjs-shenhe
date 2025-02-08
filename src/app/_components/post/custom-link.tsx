@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Link as MdastLink, RootContent } from "mdast";
-import { NodesRenderer } from "./markdownRenderer";
+import { NodesRenderer } from "@lib/markdown/markdownRenderer";
 import { isExternalLink } from "@lib/url";
 import styles from "@styles/markdown.module.scss";
 

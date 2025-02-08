@@ -3,8 +3,12 @@ import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import remarkTwitter from "./remark-twitter";
 import remarkYouTube from "./remark-youtube";
-import { CustomImage } from "./custom-image";
-import { CustomLink } from "./custom-link";
+import { CustomImage } from "@components/post/custom-image";
+import { CustomLink } from "@components/post/custom-link";
+import HeadingNode from "./headingNode";
+import ListNode from "./listNode";
+import ListItemNode from "./listItemNode";
+import TableNode from "./tableNode";
 import {
   Root,
   Heading,
@@ -12,8 +16,6 @@ import {
   List,
   ListItem,
   Table,
-  TableRow,
-  TableCell,
   Code,
   Blockquote,
   Text,
@@ -23,17 +25,9 @@ import {
   InlineCode,
   Image,
   Link,
-  Parent,
   Html,
 } from "mdast";
-import {
-  MarkdownRendererProps,
-  NodesRendererProps,
-  HeadingNodeProps,
-  ListNodeProps,
-  ListItemNodeProps,
-  TableNodeProps,
-} from "@interfaces/mdast";
+import { MarkdownRendererProps, NodesRendererProps } from "@interfaces/mdast";
 import { getCloudinaryBlurredSrc } from "@lib/cloudinary";
 import styles from "@styles/markdown.module.scss";
 
@@ -215,108 +209,4 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
     }
   });
-};
-
-/**
- * 見出しノードのレンダリング定義
- */
-const HeadingNode = ({ node }: HeadingNodeProps) => {
-  // 深さに応じて適切なコンポーネントを選択
-  const Component = (
-    {
-      1: "h2",
-      2: "h3",
-      3: "h4",
-      4: "h5",
-      5: "h6",
-      6: "p",
-    } as const
-  )[node.depth];
-
-  // 子要素のテキストを再帰的に取得
-  const childrenText = (function getChildrenText(
-    children: (Text | Parent)[]
-  ): string {
-    return children.reduce((acc, child) => {
-      if ("value" in child) {
-        return acc + (child as Text).value;
-      }
-      if ("children" in child) {
-        return acc + getChildrenText(child.children as (Text | Parent)[]);
-      }
-      return acc;
-    }, "");
-  })(node.children as (Text | Parent)[]);
-
-  // ID属性に取得したテキストをエンコードして設定
-  return (
-    <Component id={encodeURIComponent(childrenText)} className={styles.heading}>
-      <NodesRenderer nodes={node.children} />
-    </Component>
-  );
-};
-
-/**
- * リストノードのレンダリング定義
- */
-const ListNode = ({ node }: ListNodeProps) => {
-  return node.ordered ? (
-    <ol className={styles.list}>
-      <NodesRenderer nodes={node.children} />
-    </ol>
-  ) : (
-    <ul className={styles.list}>
-      <NodesRenderer nodes={node.children} />
-    </ul>
-  );
-};
-
-/**
- * リストアイテムノードのレンダリング定義
- */
-const ListItemNode = ({ node }: ListItemNodeProps) => {
-  if (node.children.length === 1 && node.children[0].type === "paragraph") {
-    return (
-      <li>
-        <NodesRenderer nodes={(node.children[0] as Paragraph).children} />
-      </li>
-    );
-  }
-
-  return (
-    <li>
-      <NodesRenderer nodes={node.children} />
-    </li>
-  );
-};
-
-/**
- * 表ノードのレンダリング定義
- */
-const TableNode = ({ node }: TableNodeProps) => {
-  const [headRow, ...bodyRows] = node.children as TableRow[];
-  return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          {headRow.children.map((cell, index) => (
-            <th key={index} className={styles[node.align?.[index] ?? "left"]}>
-              <NodesRenderer nodes={(cell as TableCell).children} />
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {bodyRows.map((row, index) => (
-          <tr key={index}>
-            {row.children.map((cell, index) => (
-              <td key={index} className={styles[node.align?.[index] ?? "left"]}>
-                <NodesRenderer nodes={(cell as TableCell).children} />
-              </td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
 };
