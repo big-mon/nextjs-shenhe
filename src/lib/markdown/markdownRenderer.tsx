@@ -151,7 +151,11 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       }
       case "table": {
         // 表ノード
-        return <TableNode key={index} node={node as Table} />;
+        return (
+          <div className={styles.table}>
+            <TableNode key={index} node={node as Table} />
+          </div>
+        );
       }
       case "thematicBreak": {
         // 水平線ノード
@@ -187,7 +191,7 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
       case "youtube": {
         // YouTubeノード
         return (
-          <div className="youtube-embed">
+          <div className={styles.youtube}>
             <iframe
               width="560"
               height="315"

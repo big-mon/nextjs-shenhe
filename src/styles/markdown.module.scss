@@ -43,33 +43,39 @@ div.codeblock {
   background-color: rgb(242 242 242);
   margin-bottom: 1.5rem;
   padding: 1rem 0.5rem;
+  overflow-x: auto;
 }
 div.box {
   margin-bottom: 1.5rem;
 }
 
-table.table {
-  width: 100%;
-  min-width: max-content;
-  margin-bottom: 1.5rem;
+.table {
+  overflow-x: auto;
 
-  th {
-    background-color: rgb(242 242 242);
-  }
+  table {
+    width: 100%;
+    min-width: max-content;
+    margin-bottom: 1.5rem;
+    overflow-x: auto;
 
-  th,
-  td {
-    border-bottom: 1px solid rgb(0 0 0);
-    padding: 1.5rem 1rem;
-
-    &.left {
-      text-align: left;
+    th {
+      background-color: rgb(242 242 242);
     }
-    &.right {
-      text-align: right;
-    }
-    &.center {
-      text-align: center;
+
+    th,
+    td {
+      border-bottom: 1px solid rgb(0 0 0);
+      padding: 1.5rem 1rem;
+
+      &.left {
+        text-align: left;
+      }
+      &.right {
+        text-align: right;
+      }
+      &.center {
+        text-align: center;
+      }
     }
   }
 }
@@ -148,5 +154,17 @@ a.link {
   text-decoration: underline;
   &:hover {
     opacity: 0.5;
+  }
+}
+
+.youtube {
+  iframe {
+    width: 100%;
+    height: calc((512px / 16) * 9);
+  }
+  @media (max-width: 512px) {
+    iframe {
+      height: calc((100vw / 16) * 9);
+    }
   }
 }
