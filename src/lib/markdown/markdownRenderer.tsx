@@ -192,13 +192,7 @@ export const NodesRenderer = ({ nodes }: NodesRendererProps) => {
         // YouTubeノード
         return (
           <div className={styles.youtube}>
-            <iframe
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${node.value}`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <iframe src={`https://www.youtube.com/embed/${node.value}`} />
           </div>
         );
       }

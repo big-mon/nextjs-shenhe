@@ -158,13 +158,11 @@ a.link {
 }
 
 .youtube {
+  display: flex;
+  justify-content: center;
+
   iframe {
-    width: 100%;
-    height: calc((512px / 16) * 9);
-  }
-  @media (max-width: 512px) {
-    iframe {
-      height: calc((100vw / 16) * 9);
-    }
+    aspect-ratio: 16 / 9;
+    width: 100% !important;
   }
 }
